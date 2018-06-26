@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/Research.css?v=7.1">
+    <style>
+        .header {
+            display: block;
+            height: auto;
+        }
+
+        .choose {
+            display: block;
+            width: 6.52rem;
+            height: auto;
+            margin: 0 auto;
+            background-color: #fafbed;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .choose #textContent {
+            display: block;
+            height: auto;
+            padding: 0.34rem 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .choose #textContent li {
+            width: 4.5rem;
+            height: 0.73rem;
+            margin: 0 auto 0.5rem;
+            border: 1px solid #b8b9b3;
+            border-radius: 20px;
+            font-size: 0.32rem;
+            line-height: 0.73rem;
+            text-indent: 2em;
+            text-align: initial;
+        }
+
+        .choose #textContent li:last-child {
+            margin-bottom: 0;
+        }
+
+        .pullBox {
+            width: 6.52rem;
+            height: 3rem;
+            margin: 0.34rem auto 0;
+            background-color: #fafbed;
+            padding-top: 0.34rem;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        #next-btn {
+            display: block;
+        }
+
+        .warn {
+            display: none;
+            width: 4rem;
+            background-color: rgba(50, 50, 50, 0.7);
+            border-radius: 0.2rem;
+            position: fixed;
+            z-index: 666;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            text-align: center;
+            line-height: 0.6rem;
+            padding: 0.2rem;
+        }
+
+        .warn p {
+            font-size: 0.3rem;
+            color: #fff;
+        }
+
+        .complete .complete-body h4 {
+            font-size: 0.56rem;
+            font-weight: 400;
+            color: #ffa901;
+            position: relative;
+            padding-left: 0;
+            margin: 0.2rem auto;
+            text-align: center;
+        }
+
+        .complete {
+            height: 5.5rem;
+        }
+    </style>
+    <title>调研详情</title>
+</head>
+
+<body>
+    <!-- 未选择答案时的提示框 -->
+    <div class="warn">
+        <p>请您选择答案</p>
+    </div>
+    <!-- 遮罩层 -->
+    <div class="B-mask"></div>
+    <div class="mask"></div>
+    <!-- 弹框 -->
+    <div class="complete">
+        <div class="complete-head">
+            <img class="complete-pic" src="./images/congratulation.png" alt="">
+            <h1>恭喜</h1>
+        </div>
+        <div class="complete-body">
+            <h3>恭喜您已经完成了呱呱调研</h3>
+            <h4>
+                <span>+</span>
+                <span id="endgold">0</span>
+                <i></i>
+            </h4>
+            <button id="accept-btn">确定</button>
+        </div>
+    </div>
+    <!-- 调研入口页面 -->
+    <div class="tipsBox">
+        <img src="./images/t1-icon4.png" alt="">
+        <h3>您已完成当前任务</h3>
+    </div>
+    <!-- 头部模块 -->
+    <div class="header">
+        <span class="orderNum">
+            <i class="index-num">0</i>/
+            <i class="index-sum">0</i>
+        </span>
+        <p class="topic"></p>
+    </div>
+    <!-- 答案选择区域 -->
+    <div class="choose">
+        <ul id="textContent">
+        </ul>
+    </div>
+    <!-- 提交区域 -->
+    <div class="pullBox">
+        <button id="next-btn" style="display: block">继续下一题
+            <i></i>
+        </button>
+        <div class="tips">
+            <p>注意：任务必须连续完成才有效，全部完成之后才能获取奖励。</p>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="js/template.js"></script>
+<script>
+    $(window).on("resize", function () {
+        var deviceWidth = $(window).width(),
+            html = $("html");
+        if (deviceWidth > 750) {
+            deviceWidth = 750;
+            html.css("fontSize", 100);
+        } else if (deviceWidth < 300) {
+            deviceWidth = 300;
+            html.css("fontSize", deviceWidth / 7.5);
+        } else {
+            html.css("fontSize", deviceWidth / 7.5);
+        }
+    }).trigger("resize");
+</script>
+<script type="text/html" id="question">
+    {{each answeritems as value}}
+    <li data-judge="{{value.rightanswer}}" data-questionid="{{questionid}}" data-answerid="{{value.answerid}}" class="rightanswer{{value.rightanswer}}">{{value.answernum}}.{{value.answercontent}}</li>
+    {{/each}}
+</script>
+<script type="text/javascript" src="js/Investigate.js?7.1"></script>

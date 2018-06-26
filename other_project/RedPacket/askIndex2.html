@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" href="./css/base.css">
+    <style>
+        body {
+            background: url('images/icon_hb7@2x.png') no-repeat;
+            background-color: #626262;
+            background-size: 100%;
+            padding-top: 2rem;
+        }
+
+        .redpacket {
+            width: 6.18rem;
+            height: 7.9rem;
+            margin: 0 auto;
+            background: url('images/icon_hb5@2x.png') no-repeat;
+            background-size: 100% 100%;
+            padding-top: 0.6rem;
+        }
+
+        .redpacket img {
+            display: block;
+            width: 0.9rem;
+            height: 0.9rem;
+            margin: 0 auto;
+            border: 1px solid #f8cda0;
+        }
+
+        .redpacket h4 {
+            font-size: 0.28rem;
+            color: #f4e1c1;
+            margin-top: 0.18rem;
+            text-align: center;
+        }
+
+        .redpacket h3 {
+            font-size: 0.4rem;
+            color: #fffed8;
+            margin-top: 0.52rem;
+            text-align: center;
+        }
+
+        .redpacket input {
+            display: block;
+            width: 5.63rem;
+            height: 0.95rem;
+            text-align: center;
+            margin: 0.57rem auto 0;
+            border-radius: 0.5rem;
+            font-size: 0.36rem;
+            color: #99999b;
+            background-color: #feedd1;
+            line-height: 0.95rem;
+            border: none;
+        }
+
+        .redpacket #getBtn {
+            width: 1.86rem;
+            height: 1.86rem;
+            color: #292e2a;
+            background-color: #fbdc9c;
+            font-size: 0.68rem;
+            margin: 0 auto;
+            border-radius: 50%;
+            line-height: 1.86rem;
+            margin-top: 0.54rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .redpacket #getBtn::after {
+            content: '';
+            position: absolute;
+            width: 1.53rem;
+            height: 1.53rem;
+            border-radius: 50%;
+            border: 1px solid #f1d194;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+        }
+
+        .animated {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+
+        @-webkit-keyframes rotateIn {
+            0% {
+                transform-origin: center;
+                -webkit-transform: rotate(-200deg);
+                transform: rotate(-200deg);
+                opacity: 0;
+            }
+            0%,
+            to {
+                -webkit-transform-origin: center;
+            }
+            to {
+                transform-origin: center;
+                -webkit-transform: none;
+                transform: none;
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotateIn {
+            0% {
+                transform-origin: center;
+                -webkit-transform: rotate(-200deg);
+                transform: rotate(-200deg);
+                opacity: 0;
+            }
+            0%,
+            to {
+                -webkit-transform-origin: center;
+            }
+            to {
+                transform-origin: center;
+                -webkit-transform: none;
+                transform: none;
+                opacity: 1;
+            }
+        }
+
+        .rotateIn {
+            -webkit-animation-name: rotateIn;
+            animation-name: rotateIn;
+        }
+
+        .warn {
+            display: none;
+            width: 4rem;
+            background-color: rgba(50, 50, 50, 0.7);
+            border-radius: 0.2rem;
+            position: absolute;
+            z-index: 666;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            text-align: center;
+            line-height: 0.6rem;
+            padding: 0.2rem;
+        }
+
+        .warn p {
+            font-size: 0.3rem;
+            color: #fff;
+        }
+    </style>
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <title>呱呱头条红包雨疯抢中…</title>
+</head>
+
+<body style="visibility:hidden">
+    <div class="warn">
+        <p></p>
+    </div>
+    <div class="redpacket">
+        <img src="./images/icon3@2x.png" alt="">
+        <h4>呱呱红包</h4>
+        <h3>给您发了一张红包雨入场劵</h3>
+        <input type="text" placeholder="输入手机号领取入场劵" class="putcode" maxlength="11">
+        <div id="getBtn" class="animated rotateIn">開</div>
+    </div>
+</body>
+<script src="./js/jquery.min.js" type="text/javascript"></script>
+<script src="./js/config.js"></script>
+<script src="./js/askIndex.js?v=4.0" type="text/javascript"></script>
+
+</html>

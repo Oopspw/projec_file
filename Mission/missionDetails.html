@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/missionDetails.css">
+    <script>
+        (function(doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function() {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <title>任务详情</title>
+</head>
+<body>
+<!--遮罩层-->
+<div class="mask"></div>
+<!--任务记录-->
+<div class="bigBox">
+    <!--标题-->
+    <h3>任务记录</h3>
+    <i class="left1"></i>
+    <i class="left2"></i>
+    <i class="right1"></i>
+    <i class="right2"></i>
+    <span class="left3"></span>
+    <span class="left4"></span>
+    <span class="right3"></span>
+    <span class="right4"></span>
+</div>
+<!--签到记录-->
+<div class="showDate">
+    <i class="left1"></i>
+    <i class="left2"></i>
+    <i class="right1"></i>
+    <i class="right2"></i>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+        <li>13</li>
+        <li>14</li>
+        <li>15</li>
+        <li>16</li>
+        <li>17</li>
+        <li>18</li>
+        <li>19</li>
+        <li>20</li>
+        <li>21</li>
+        <li>22</li>
+        <li>23</li>
+        <li>24</li>
+        <li>25</li>
+        <li>26</li>
+        <li>27</li>
+        <li>28</li>
+        <li>29</li>
+        <li>30</li>
+    </ul>
+</div>
+<!--底部盒子-->
+<div class="footer">
+    <div id="ShowBtn">
+        <a href="#">去分享赚金币</a>
+    </div>
+    <p class="shareTip">注意：任务必须连续完成才有效。当中途中断后，将重新计算时间，获取对应时间奖励。</p>
+</div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/missionDetails.js"></script>
+</html>

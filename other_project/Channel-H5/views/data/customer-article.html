@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+	<link rel="stylesheet" href="${basePath}/resources/style/css/public.css">
+	<link rel="stylesheet" href="${basePath}/resources/style/css/style.css">
+	<script src="${basePath}/thirdparty/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="${basePath}/resources/style/js/common.js"></script>
+	<style>
+		body {
+			background-color: #f5f4f9;
+			padding-top: 0.22rem;
+		}
+	</style>
+	<script>
+		(function (doc, win) {
+			var docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange'
+				: 'resize', recalc = function () {
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth)
+						return;
+					if (clientWidth >= 750) {
+						docEl.style.fontSize = '100px';
+					} else {
+						docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+					}
+				};
+			if (!doc.addEventListener)
+				return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+	<title>媒体文章</title>
+</head>
+
+<body style="visibility:hidden">
+	<div class="contentBox">
+		<ul>
+			<#if list?? && (list?size>0) >
+				<#list list as info>
+					<li>
+						<div class="index">
+							<p>${info_index+1}</p>
+						</div>
+						<div class="imgBox">
+							<#if info.url?? && info.url!="">
+								<a target="_blanck" href="${info.url!''}" style="text-decoration: none;color: #163bda;">
+									<#else>
+										<a target="_blanck" href="${info.linkurl!''}articleid=${info.articleid!''}" style="text-decoration: none;color: #163bda;">
+							</#if>
+							<img src="${info.photo!''}" alt="">
+							</a>
+						</div>
+						<div class="titleBox">
+							<#if info.url?? && info.url!="">
+								<a target="_blanck" href="${info.url!''}" style="text-decoration: none;color: #163bda;">
+									<#else>
+										<a target="_blanck" href="${info.linkurl!''}articleid=${info.articleid!''}" style="text-decoration: none;color: #163bda;">
+							</#if>
+							<h3>
+								<#if info.title?length gt 10>
+									${info.title?substring(0,10)}...
+									<#else>
+										${info.title!''}
+								</#if>
+							</h3>
+							<p>类别：${info.adcatalogid!''} 余量：${info.yl!''}</p>
+							</a>
+						</div>
+						<div class="btnBox">
+							<button class="showBtn" onclick="customerArticleDetail(${info.articleid!''},${customerid!''})">详情</button>
+							<button class="addBtn" onclick="incrementInit(${info.articleid!''},${customerid!''},${info.id!''})">续量</button>
+						</div>
+					</li>
+				</#list>
+				<#else>
+					<!-- 列表无数据时显示 -->
+					<div class="noVacancy" style="display: block;">
+						<img src="${basePath}/resources/style/images/icon_default@2x.png" alt="">
+						<p>暂无媒体账号记录</p>
+					</div>
+			</#if>
+		</ul>
+	</div>
+	<div class="mask"></div>
+	<!-- 弹框 -->
+	<div class="alertBox">
+		<div class="alertHead">
+			<img src="${basePath}/resources/style/images/backgroud2@2x.png" alt="">
+		</div>
+		<form id="frmip">
+			<div class="alertBody">
+				<input type="hidden" id="customerid" name="customerid" />
+				<input type="hidden" id="articleid" name="articleid" />
+				<input type="hidden" id="id" name="id" />
+				<input type="hidden" id="price" name="price">
+				<input type="hidden" id="pointNum" name="pointNum" />
+				<h3>续量账号名称：
+					<span id="mediaName">媒体名称一</span>
+				</h3>
+				<h3>续量文章：
+					<span id="addArticle">这是账号</span>
+				</h3>
+				<p>续量IP：</p>
+				<input type="text" placeholder="最低输入5000续量IP" class="ipCode" id="incrementNum" name="incrementNum" onkeyup="value=value.replace(/[^(\-?)\d]/g,'')"
+				/>
+			</div>
+			<div class="alertfoot">
+				<div class="left" id="abolish">取消</div>
+				<div class="right" id="affirm">确认</div>
+			</div>
+		</form>
+	</div>
+	<!-- 确认弹框 -->
+	<div class="commitBox">
+		<div class="commitHead">
+			<img src="${basePath}/resources/style/images/backgroud2@2x.png" alt="">
+		</div>
+		<div class="commitBody">
+			<h3>本次续量：
+				<span class="red" id="bencixulian"></span>
+			</h3>
+			<p>本次消耗：
+				<span class="red" id="bencixiaohao"></span>积分
+			</p>
+		</div>
+		<div class="commitfoot">
+			<div class="left" id="escThis">取消</div>
+			<div class="right" id="commit">确认</div>
+		</div>
+	</div>
+	<div class="warn">
+		<!-- 返回的提示消息显示在tips中 -->
+		<p class="tips"></p>
+	</div>
+</body>
+<script>
+	$('body').css('visibility', 'inherit')
+	$('#abolish').click(function () {
+		$('.alertBox').hide()
+		$('.mask').hide()
+		$('#incrementNum').val("");
+	})
+	$('#escThis').click(function () {
+		$('.commitBox').hide()
+		$('.mask').hide()
+		$('#incrementNum').val("");
+	})
+	$('#affirm').click(function () {
+		var incrementNum = $('#incrementNum').val();
+		if (incrementNum == "") {
+			warnTips("请输入续量IP");
+		} else {
+			if (parseInt(incrementNum) < 5000) {
+				warnTips("续量IP不能少于5000,请重新输入");
+			} else {
+				var price = $("#price").val();
+				var pointNum = Math.ceil(parseFloat(incrementNum) * parseFloat(price)); //需要扣掉的积分数
+				console.log(incrementNum + "续量ip");
+				console.log(price + "单价");
+				console.log(pointNum);
+				$("#bencixulian").html(incrementNum);
+				$("#bencixiaohao").html(pointNum);
+				$("#pointNum").val(pointNum);
+				$('.alertBox').hide()
+				$('.commitBox').show();
+			}
+		}
+
+	})
+
+	$('#commit').click(function () {
+		$.ajax({
+			type: "post",
+			url: "${basePath}/index/incrementSave",
+			data: $('#frmip').serialize(),
+			dataType: "json",
+			success: function (data) {
+				if (data.result) {
+					//显示查询结果
+					$('.alertBox').hide()
+					$('.commitBox').hide()
+					$('.mask').hide()
+					window.location.reload();
+				} else {
+					warnTips(data.msg);
+				}
+			}
+		})
+		/* var incrementNum = $('#incrementNum').val();
+		if (incrementNum == "") {
+			warnTips("请输入续量IP");
+		} else {
+			if (parseInt(incrementNum) < 5000) {
+				warnTips("续量数目不足,请重新输入");
+			} else {
+				var price = $("#price").val();
+				var pointNum = Math.ceil(parseFloat(incrementNum) * parseFloat(price)); //需要扣掉的积分数
+				console.log(price);
+				console.log(incrementNum);
+				console.log(pointNum);
+				$("#pointNum").val(pointNum);
+				
+			}
+		} */
+	})
+	function customerArticleDetail(articleid, customerid) {
+		window.location.href = "${basePath}/index/customerArticleDetail?articleid=" + articleid + "&customerid=" + customerid;
+	}
+	function incrementInit(articleid, customerid, id) {
+		$.ajax({
+			type: "post",
+			url: "${basePath}/index/incrementInit",
+			data: { "customerid": customerid, "id": id, "articleid": articleid },
+			dataType: "json",
+			success: function (data) {
+				if (data.result) {
+					var obj = data.data;
+					if (obj != null) {
+						//获取用户输入的值
+						$("#mediaName").html(obj.customername);
+						$("#customerid").val(obj.customerid);
+						$("#id").val(id);
+						$("#price").val(obj.price);
+						$("#articleid").val(articleid);
+						//显示查询结果
+						$('.alertBox').show()
+						$('.mask').show()
+					}
+				}
+			}
+		})
+	}
+</script>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/DownloadMe.css">
+  <script>
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          if (clientWidth >= 750) {
+            docEl.style.fontSize = '100px';
+          } else {
+            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+          }
+        };
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+  </script>
+  <title>呱呱头条APP下载</title>
+</head>
+
+<body>
+  <a href="javascript:;" id="download_btn"></a>
+  <div id="mask">
+    <img src="./images/icon4@2x.jpg" alt="">
+  </div>
+</body>
+
+</html>
+<script src="./js/jquery.min.js"></script>
+<script>
+  var btn = document.getElementById('download_btn')
+  var mask = document.getElementById('mask')
+  var httpUrl = 'http://47.104.75.171/UserCenterWebInterface-http'
+  var downLoadUrl
+  function getJumpUrl() {
+    $.ajax({
+      type: 'POST',
+      url: httpUrl + '/kdbapi/getDownloadAppPageWap',
+      data: JSON.stringify({
+        Infversion: 7.2
+      }),
+      dataType: 'json',
+      success: function (res) {
+        console.log(res)
+        downLoadUrl = res.data.apkurl
+      },
+      error: function (res) {
+        $('.warn').fadeIn(100)
+        $('.warn>p').text(res.msg.substring(2))
+        $('.warn').fadeOut(4000)
+      }
+    })
+  }
+  getJumpUrl()
+  //点击操作
+  btn.onclick = function () {
+    if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+      window.location.href =
+        'https://itunes.apple.com/us/app/id1262755575?l=zh&ls=1&mt=8'
+    } else if (/(Android)/i.test(navigator.userAgent)) {
+      if (isWeiXin()) {
+        mask.style.display = 'block';
+      } else {
+        window.location.href = downLoadUrl
+      }
+    }
+  }
+
+  function downLoad() {
+    if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+      window.location.href =
+        'https://itunes.apple.com/us/app/id1262755575?l=zh&ls=1&mt=8'
+    } else if (/(Android)/i.test(navigator.userAgent)) {
+      window.location.href = downLoadUrl
+    }
+  }
+
+  setTimeout(function () {
+    downLoad()
+  }, 1000);
+
+  mask.onclick = function () {
+    this.style.display = 'none';
+  }
+
+  //判断是否微信登陆
+  function isWeiXin() {
+    var ua = window.navigator.userAgent.toLowerCase();
+    if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+</script>

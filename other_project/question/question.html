@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/question.css?v=7.1">
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <title>常见问题</title>
+</head>
+
+<body style="visibility:hidden">
+    <div class="header">
+        <div class="question_btn choose" data-index="1">
+            <a href="javascript:;">新手问题</a>
+        </div>
+        <div class="question_btn" data-index="2">
+            <a href="javascript:;">金币问题</a>
+        </div>
+        <div class="question_btn" data-index="3">
+            <a href="javascript:;">收徒问题</a>
+        </div>
+        <div class="question_btn" data-index="4">
+            <a href="javascript:;">兑换问题</a>
+        </div>
+        <div class="question_btn" data-index="5">
+            <a href="javascript:;">分享问题</a>
+        </div>
+        <div class="question_btn" data-index="6">
+            <a href="javascript:;">账号问题</a>
+        </div>
+    </div>
+    <div class="nullbox"></div>
+    <h3 class="question_type">新手问题</h3>
+    <div class="title">呱呱头条是什么？
+        <em></em>
+    </div>
+    <div class="content">呱呱头条是一款稳步运营了3年的资讯阅读软件，旨在提供海量资讯内容给大家的同时，还能从
+        <span class="green">文章中获取金币，创造收益</span>。
+    </div>
+    <div class="title">呱呱头条为什么会给您奖励？
+        <em></em>
+    </div>
+    <div class="content">为了引领全民阅读，帮助大家养成良好的阅读习惯，在阅读及分享文章的过程中，平台会
+        <span class="green">给予一定的金币奖励</span>。而奖励的金币在兑换时会
+        <span class="green">自动换算成人民币</span>，让您在阅读过程中不仅能够增长知识，还能有所收益！</div>
+    <div class="title">收徒有什么好处？
+        <em></em>
+    </div>
+    <div class="content">
+        <span class="green">好友</span>通过您的收徒链接或二维码注册呱呱头条，
+        <span class="green">即为收徒</span>。现在
+        <span class="green">收徒就有8元现金奖励</span>，时间有限，要抓紧哦。而且徒弟有收益了，还会向您永久进贡金币~</div>
+    <div class="title" id="jumpPlay">呱呱头条怎么玩？
+        <span class="heat"></span>
+        <em class="linkUrl"></em>
+    </div>
+    <div class="title">怎样才能快速赚钱？
+        <em></em>
+    </div>
+    <div class="content">邀请好友成为您的徒弟赚钱快！您可以通过
+        <span class="green">微信、QQ</span>等方式邀请您身边的亲朋好友，每成功收取一名徒弟，您就可获得至少8元奖励，还能终身享受徒弟徒孙收益分成，徒弟越多，奖励越多。只要徒弟徒孙足够多，躺着都能赚现金！</div>
+    <div class="title">怎么才能提高收益？
+        <em></em>
+    </div>
+    <div class="content">学会专业方法，才能越赚越多
+        <p>【每天加10个微信好友】附近好友，微信摇一摇，新好友就来了</p>
+        <p>【每天多收1-2个徒弟】晒收益图，成为你的徒弟，永久享受提成</p>
+        <p>【每天多加5-8个微信群】微信多搜索群加入，很容易 只要每天坚持完成这些目标，收益就会越来越多</p>
+    </div>
+    <h3 class="question_type">金币问题</h3>
+    <div class="title">金币是什么？
+        <em></em>
+    </div>
+    <div class="content">金币是呱呱头条里的货币单位，可以兑换成人民币。 1000金币等于多少人民币？ 1000金币＝1元
+    </div>
+    <div class="title">如何快速获得分享文章的金币？
+        <em></em>
+    </div>
+    <div class="content">
+        <p>1.尽量多加微信好友</p>
+        <p>2.分享的文章要少而精，针对感兴趣的人群进行分享</p>
+        <p>3.官方禁止互刷互阅行为，建议大家通过分享好友群及朋友圈等正常行为来获取收益。</p>
+    </div>
+    <h3 class="question_type">收徒问题</h3>
+    <div class="title" id="master">如何收徒？
+        <span class="heat"></span>
+        <em class="linkUrl"></em>
+    </div>
+    <div class="title">邀请码是什么？怎么用？
+        <em></em>
+    </div>
+    <div class="content">邀请码是呱呱头条为每位用户设计的唯一标识码，用于
+        <span class="green">邀请好友</span>时使用
+        <p>1.
+            <span class="green">分享收徒链接</span>给朋友在线注册，链接中已带有您的邀请码，
+            <span class="green">因此无需再次手工填写</span>
+        </p>
+        <p>2.如果朋友是自行从手机应用商店搜索“呱呱头条”先安装后注册的，您需要让您朋友登陆后点击
+            <span class="green">(1)师徒(2)输入邀请码</span>，进入
+            <span class="green">(3)填写您的邀请码</span>进行绑定，这样
+            <span class="green">他才是您的徒弟</span>哦</p>
+        <img src="images/screenshot/red_packet.png" alt="">
+    </div>
+    <div class="title">收徒奖励的8元奖励如何获得？
+        <em></em>
+    </div>
+    <div class="content">如图：
+        <img src="images/screenshot/master-active.png" alt="">
+    </div>
+    <div class="title">分享出去的收徒二维码或收徒链接打不开怎么办？
+        <em></em>
+    </div>
+    <div class="content">
+        <p>方法一：告诉朋友到手机应用商店（安卓手机到各自的应用市场，若手机应用市场没有，可到应用宝下载，或者联系客服，苹果手机到App Store）搜索“呱呱头条”下载安装，注册登录后到师徒页面填写您的邀请码完成绑定</p>
+        <p>方法二：重新分享一次，最新的可正常打开 （如果多次尝试还是失败，请立即联系客服获得帮助）
+        </p>
+    </div>
+    <h3 class="question_type">兑换问题</h3>
+    <div class="title">如何申请兑换？
+        <em></em>
+    </div>
+    <div class="content">当金币达到一定额度，您可进入“我的”—“我要兑换”页面，选择金额申请兑换。兑换分为微信兑换和支付宝兑换。（订单一旦申请兑换将无法取消，请务必再三确认！）</div>
+    <div class="title">兑换多久到账？
+        <em></em>
+    </div>
+    <div class="content">普通会员在申请兑换后7个工作日内到账，铜牌以上会员次日到账。 注：周六日及节假日不处理兑换，将自动顺延到下一个工作日。
+    </div>
+    <h3 class="question_type">分享问题</h3>
+    <div class="title">苹果手机分享文章时提示“无法分享到微信”？
+        <em></em>
+    </div>
+    <div class="content">
+        <p>出现这种情况的苹果用户，可以到
+            <span class="green">呱呱头条－(1)我的－(2)设置</span>－打开
+            <span class="green">“(3)使用系统分享”</span>，就能正常分享文章了</p>
+        <img src="images/screenshot/set_code1.png" alt="">
+        <img src="images/screenshot/set_code2.png" alt="">
+    </div>
+    <h3 class="question_type">账号问题</h3>
+    <div class="title">密码忘记了怎么办？
+        <em></em>
+    </div>
+    <div class="content">在进行登录时选择“忘记密码”，按提示操作即可
+        <img src="images/screenshot/load1.png" alt="">
+        <img src="images/screenshot/load2.png" alt="">
+    </div>
+    <div id="service">
+        <img src="./images/icon1@2x.png" alt="">
+    </div>
+</body>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/question.js?v=7.1"></script>
+
+</html>

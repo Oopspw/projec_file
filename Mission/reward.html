@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="referrer" content="never">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/reward.css?v=1.12.01">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <title>悬赏任务详情</title>
+</head>
+<body>
+    <div class="B-mask"></div>
+    <div class="mask"></div>
+    <!-- 悬赏任务详情页面 -->
+<div class="tab-box">
+    <ul class="clearfix">
+        <li class="firstLi titleLi" id="explain">
+            <a href="javascript:void(0);" class="acshow">任务说明</a>
+        </li>
+        <li class="titleLi" id="taskShow">
+            <a href="javascript:void(0);">任务详情</a>
+        </li>
+    </ul>
+</div>
+
+    <div id="rewardIndex">
+        <div class="nullbox">
+        </div>
+        <!-- 任务情况 -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide bodybox1">
+                    <header>
+                        <div class="bannar-pic">
+                            <img src="./images/banner.png" alt="">
+                        </div>
+                        <div class="tastContent">
+                            <h2 class="tastTitle">糟糕~服务器君睡着了~</h2>
+                            <p class="weTips">请诸位稍等我去叫醒他~</p>
+                        </div>
+                        <div class="tastData">
+                            <div class="flexBox flexBox1">
+                                <h3>总收益</h3>
+                                <h2 class="yellow">
+                                    <span id="rewardGold">0</span>
+                                    <i class="yellow">金币</i>
+                                </h2>
+                            </div>
+                            <div class="flexBox flexBox2">
+                                <h3>剩余天数
+                                    <i>(仅剩)</i>
+                                </h3>
+                                <h2>
+                                    <span id="rewardDay">0</span>
+                                    <i>天</i>
+                                </h2>
+                            </div>
+                            <div class="flexBox flexBox3">
+                                <h3>剩余名额</h3>
+                                <h2>
+                                    <span id="rewardNum">0</span>
+                                    <i>名</i>
+                                </h2>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- 任务流程图 -->
+                    <div class="tast-pic">
+                        <h3>任务流程图</h3>
+                        <ul class="pic-show">
+                            <li class="wait">领取任务</li>
+                            <li class="wait second">提交截图</li>
+                            <li class="wait">是否通过</li>
+                            <li class="fouth">获取奖励</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-slide bodybox2">
+                    <div class="tast-details2">
+                        <h3>任务详情</h3>
+                        <p class="details-content">
+                            请诸位稍等我去叫醒他~
+                        </p>
+                    </div>
+                    <div class="nullbox"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="_isStart">
+        <button class="ensure" disabled id="_ensure"> 立马参与</button>
+    </div>
+    <!-- 上传图片页面 -->
+    <div id="rewardPicIndex">
+        <div class="pic-alert">
+            <div class="alert-body">
+                <img class="" src="./images/t1-icon2.png" alt="">
+                <p>图片没有上传完毕呢?</p>
+                <p>是不是漏掉了呢?赶紧检查一下吧!</p>
+            </div>
+            <div class="alert-bottom">
+                <button id="inspect-btn">检查一下</button>
+            </div>
+        </div>
+
+        <!-- 弹框 -->
+        <div class="warn-alert">
+            <div class="alert-body">
+                <p>您操作过于频繁，请稍后再试</p>
+            </div>
+            <div class="alert-bottom">
+                <button id="accept-btn">确定</button>
+            </div>
+        </div>
+        <div class="commit-alert">
+            <div class="alert-body">
+                <img class="" src="./images/reward-icon8.png" alt="">
+                <p>您的资料已提交成功</p>
+                <p>审核专员会尽快审核完毕</p>
+            </div>
+            <div class="alert-bottom">
+                <button id="commit-accept-btn">确定</button>
+            </div>
+        </div>
+
+
+        <div class="pic-content">
+            <h3 class="uppic-title">上传任务图</h3>
+            <div id="picTemplate_show"></div>
+            <div class="tip-box">
+                <img src="./images/reward-icon2.png" alt="">
+                <p class="wetips">咨询客服微信：
+                    <i id="kefuh">ggzkf09</i>
+                </p>
+            </div>
+            <div class="btn-box">
+                <button id="commit">提交审核</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="./js/jquery.min.js"></script>
+<!-- Swiper JS -->
+<script src="./js/swiper.min.js"></script>
+<script src="./js/template.js"></script>
+<script type="text/html" id='pictemplate'>
+    {{each data.shilituimageitem as value i}}
+    <div class="picrow clearfix">
+        <h2>{{value.displayorder}}、</h2>
+        <p class="uppic-toke">任务图说明：{{value.templateintro}}</p>
+        <p class="uppic-index">上传任务图:</p>
+        <div class="show-pic">
+            <img class="exampleImg" id="imgTest{{i+1}}" src="{{value.templateimage}}" onclick="OpenPic({{i+1}})">
+            <em></em>
+        </div>
+
+        <!-- 图片放大 -->
+        <div class="show-big{{i+1}} ImgZoomInImage" style="position:fixed;z-index:10000;width:100%;" hidden>
+            <img class="imgBig{{i+1}}" id="target" src="{{value.templateimage}}" style="cursor:pointer; position:fixed; z-index:10001;width:6rem; max-height='7rem';"
+                onclick=HidethisPic(this);>
+        </div>
+
+        <div class="preview upbox upbox{{i+1}}">
+            <input type="file" name="image" accept="image/*" onchange="previewImage(this,{{i+1}})" id='upPic{{i+1}}' data-id='0' data-templateid="{{value.templateid}}"
+                data-index='0'>
+        </div>
+    </div>
+    {{/each}}
+</script>
+<script type="text/html" id='_pictemplate'>
+    {{each data.commintimageitem as value i}}
+    <div class="picrow clearfix">
+        <h2>{{i+1}}、</h2>
+        <p class="uppic-toke">任务图说明：{{value.usertemplateintro}}</p>
+        <p class="uppic-index">上传任务图:</p>
+        <div class="show-pic">
+            <img class="exampleImg" id="imgTest{{i+1}}" src="{{value.usertemplateimage}}" onclick="OpenPic({{i+1}})">
+            <em></em>
+        </div>
+
+        <!-- 图片放大 -->
+        <div class="show-big{{i+1}} ImgZoomInImage" style="position:fixed;z-index:10000;width:100%;" hidden>
+            <img class="imgBig{{i+1}}" id="target" src="{{value.usertemplateimage}}" style="cursor:pointer;width:6rem; max-height='7rem'; position:fixed; z-index:10001;"
+                onclick=HidethisPic();>
+        </div>
+        {{if value.userimagestatus == ""}}
+        <div class="preview upbox upbox{{i+1}}" style="background:url({{value.userimage}}); background-size:cover">
+            <input type="file" name="image" accept="image/*" onchange="changeImage(this,{{i+1}})" id='upPic{{i+1}}' data-userimageid='{{value.usertemplateid}}'
+                data-usertemplateid='{{value.usertemplateid}}' data-index='0'>
+        </div>
+        {{/if}} {{if value.userimagestatus == "0"}}
+        <div class="preview upbox upbox{{i+1}}" style="background:url({{value.userimage}}); background-size:cover">
+            <input type="file" name="image" accept="image/*" onchange="changeImage(this,{{i+1}})" id='upPic{{i+1}}' data-userimageid='{{value.id}}'
+                data-usertemplateid='{{value.usertemplateid}}' data-index='0'>
+        </div>
+        {{/if}} {{if value.userimagestatus == "1"}}
+        <div class="issure-box" style="display:block;">
+            <img src="./images/reward-icon8.png" alt="">
+            <p>图片已审核通过</p>
+        </div>
+        {{/if}} {{if value.userimagestatus == "2"}}
+        <div class="preview upbox upbox{{i+1}}" hidden>
+            <input type="file" name="image" accept="image/*" onchange="changeImage(this,{{i+1}})" id='upPic{{i+1}}' data-userimageid='{{value.id}}'
+                data-usertemplateid='{{value.usertemplateid}}' data-index='0'>
+        </div>
+        <div class="warn-box warn-box{{i+1}}" style="display:block;">
+            <img src="./images/reward-icon11.png" alt="">
+            <p>图片审核未通过</p>
+            <p>请重新上传</p>
+            <input type="file" name="image" accept="image/*" onchange="changeImage(this,{{i+1}})" id='upPic{{i+1}}' data-userimageid="{{value.id}}"
+                data-usertemplateid="{{value.usertemplateid}}" data-index='0'>
+        </div>
+        {{/if}}
+    </div>
+    {{/each}}
+</script>
+<script src="./js/Hammer.js"></script>
+<script src="./js/reward.js?v=1.12.01"></script>

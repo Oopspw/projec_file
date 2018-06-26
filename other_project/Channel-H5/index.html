@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/public.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <script>
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          if (clientWidth >= 750) {
+            docEl.style.fontSize = '100px';
+          } else {
+            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+          }
+        };
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+  </script>
+  <title>首页</title>
+</head>
+
+<body style="visibility:hidden">
+  <div id="wrapper">
+    <div id="scroller">
+      <!-- 头部 -->
+      <div class="header">
+        <div class="head_box jumpSet">
+          <!-- 用户头像 -->
+          <img class="head_icon" src="./images/icon_ID@2x.png" alt="">
+        </div>
+        <div class="head_words">
+          <h3 class="nickName">用户名</h3>
+          <p class="channelCode">渠道号:
+            <span class="green">
+              <input type="text" id="bar" value="654321" readonly="readonly">
+            </span>
+            <span class="green">
+              <button class="btn" data-clipboard-action="copy" data-clipboard-target="#bar">(点击复制)
+              </button>
+            </span>
+          </p>
+          <h3 class="title">剩余积分：
+            <span class="green">654321</span>
+          </h3>
+        </div>
+        <span class="arrows jumpSet">
+        </span>
+      </div>
+      <!-- 分类空位查询 -->
+      <div class="vacancy">
+        <h3 class="title">分类空位查询</h3>
+        <div class="left" id="jumpVacancy">
+          <p>详细列表</p>
+        </div>
+      </div>
+      <div class="inputBox">
+        <!-- 用户输入code -->
+        <input type="text" placeholder="请选择分类code查询" class="find">
+        <!-- 查询按钮 -->
+        <button class="findBtn">查询</button>
+      </div>
+      <!-- 媒体号查询 -->
+      <div class="media">
+        <h3 class="title">媒体号</h3>
+        <div class="left">
+          <p id="showFind">共
+            <span class="numSum">8</span>条记录</p>
+        </div>
+      </div>
+      <div class="commonBox">
+        <!-- 筛选搜索条件 -->
+        <div class="searchBox">
+          <h4>搜索条件</h4>
+          <input type="text" class="search" placeholder="请输入媒体运营人或手机号">
+          <button class="searchBtn">立即筛选</button>
+        </div>
+        <h3 class="resetTips">下拉重置筛选条件</h3>
+      </div>
+    </div>
+    <!-- 列表 -->
+    <div class="list">
+      <ul>
+        <li>
+          <div class="index">1</div>
+          <div class="picBox">
+            <!-- 公司 -->
+            <img src="./images/icon_firm@2x.png" alt="">
+          </div>
+          <div class="contents">
+            <h3>媒体名称一</h3>
+            <p>运营者:
+              <span class="tureName">公司</span>
+            </p>
+            <p>手机号:
+              <span class="numbul">13512341234</span>
+            </p>
+          </div>
+          <div class="details">
+            详情
+          </div>
+        </li>
+        <li>
+          <div class="index">2</div>
+          <div class="picBox">
+            <!-- 个人 -->
+            <img src="./images/icon_Caret@2x.png" alt="">
+          </div>
+          <div class="contents">
+            <h3>媒体名称一</h3>
+            <p>运营者:
+              <span class="tureName">个人</span>
+            </p>
+            <p>手机号:
+              <span class="numbul">13512341234</span>
+            </p>
+          </div>
+          <div class="details">
+            详情
+          </div>
+        </li>
+        <li>
+          <div class="index">3</div>
+          <div class="picBox">
+            <img src="./images/icon_Caret@2x.png" alt="">
+          </div>
+          <div class="contents">
+            <h3>媒体名称一</h3>
+            <p>运营者:
+              <span class="tureName">张三</span>
+            </p>
+            <p>手机号:
+              <span class="numbul">13512341234</span>
+            </p>
+          </div>
+          <div class="details">
+            详情
+          </div>
+        </li>
+        <li>
+          <div class="index">4</div>
+          <div class="picBox">
+            <img src="./images/icon_Caret@2x.png" alt="">
+          </div>
+          <div class="contents">
+            <h3>媒体名称一</h3>
+            <p>运营者:
+              <span class="tureName">张三</span>
+            </p>
+            <p>手机号:
+              <span class="numbul">13512341234</span>
+            </p>
+          </div>
+          <div class="details">
+            详情
+          </div>
+        </li>
+        <li>
+          <div class="index">5</div>
+          <div class="picBox">
+            <img src="./images/icon_Caret@2x.png" alt="">
+          </div>
+          <!-- 改动 -->
+          <div class="contents">
+            <h3>媒体名称一</h3>
+            <p>运营者:
+              <span class="tureName">张三</span>
+            </p>
+            <p>手机号:
+              <span class="numbul">13512341234</span>
+            </p>
+          </div>
+          <div class="details">
+            详情
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- 列表无数据时显示 -->
+    <div class="noData">
+      <img src="./images/icon_default@2x.png" alt="">
+      <p>暂无媒体账号记录</p>
+    </div>
+  </div>
+  </div>
+  <div class="warn">
+    <!-- 返回的提示消息显示在tips中 -->
+    <p class="tips"></p>
+  </div>
+  <!-- 遮罩层 -->
+  <div class="mask"></div>
+  <!-- 空位查询结果显示 -->
+  <div class="showFindTip">
+    <div class="showHead">
+      <img src="./images/backgroud@2x.png" alt="">
+    </div>
+    <p>尊敬的用户</p>
+    <p class="findEnd">您查询的
+      <span id="SumNum"></span>当前
+      <span id="residue"></span>
+    </p>
+    <div class="closeBtn">确认</div>
+  </div>
+</body>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/clipboard.min.js"></script>
+<script>
+  $('body').css('visibility', 'inherit')
+  //查询
+  $('.findBtn').click(function () {
+    //获取用户输入的值
+    var code = $('.find').val()
+    //显示查询结果
+    $('.mask').show()
+    $('.showFindTip').show()
+  })
+
+  //立即筛选
+  $('.searchBtn').click(function () {
+    $('.searchBox').hide()
+    $('.searchCode').show()
+    $('.condition').text($('.search').val())
+  })
+
+  // 重置筛选信息
+  $('.resetCode').click(function () {
+    $('.searchBox').show()
+    $('.searchCode').hide()
+    $('.search').val('')
+  })
+
+  //关闭查询结果显示
+  $('.closeBtn').click(function () {
+    $('.mask').hide()
+    $('.showFindTip').hide()
+  })
+
+
+  $('#jumpVacancy').click(function () {
+    window.location.href = "vacancy.html"
+  })
+  $('.jumpSet').click(function () {
+    window.location.href = "setCode.html"
+  })
+  $('.details').click(function () {
+    window.location.href = "mediaArticle.html"
+  })
+
+  //复制到粘贴板
+  var clipboard = new Clipboard('.btn');
+  clipboard.on('success', function (e) {
+    $('.warn').fadeIn()
+    $('.tips').text('复制成功')
+    $('.warn').fadeOut(3000)
+  });
+  clipboard.on('error', function (e) {
+  });
+</script>
+
+</html>

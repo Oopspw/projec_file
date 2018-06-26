@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+	<link rel="stylesheet" href="${basePath}/resources/style/css/public.css">
+	<link rel="stylesheet" href="${basePath}/resources/style/css/style.css">
+	<link rel="stylesheet" type="text/css" href="${basePath}/resources/css/jquery.loadmask.css" />
+	<script>
+		(function (doc, win) {
+			var docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange'
+				: 'resize', recalc = function () {
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth)
+						return;
+					if (clientWidth >= 750) {
+						docEl.style.fontSize = '100px';
+					} else {
+						docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+					}
+				};
+			if (!doc.addEventListener)
+				return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+	<title>${baseName}开放平台</title>
+</head>
+
+<body style="visibility:hidden">
+	<div class="iconBox">
+		<img src="${basePath}/resources/style/images/icon_ID@2x.png" alt="">
+	</div>
+	<form id="adminForm" onsubmit="return false" action="##" method="post">
+		<div class="userBox">
+			<input type="text" class="userName" placeholder="请输入您的账号" name="username" id="username">
+		</div>
+		<div class="passBox">
+			<input type="password" class="passWord" placeholder="请输入登录密码" name="password" id="password">
+		</div>
+		<button class="login" onclick="logins();" style="cursor: pointer;">登&nbsp;&nbsp;录</button>
+		<div class="warn">
+			<!-- 返回的提示消息显示在tips中 -->
+			<p class="tips"></p>
+		</div>
+	</form>
+</body>
+<!-- jQuery 2.2.3 -->
+<script src="${basePath}/thirdparty/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="${basePath}/resources/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="${basePath}/resources/js/jquery.loadmask.js"></script>
+<script src="${basePath}/resources/style/js/common.js"></script>
+<script>
+	$('body').css('visibility', 'inherit')
+	//获取并判断是否输入登录信息
+	$('.userName').on("input propertychange", function () {
+		if ($('.userName').val() !== '' && $('.passWord').val() !== '') {
+			//输入了登录信息
+			$('.login').removeAttr('disabled').addClass('haslogin')
+		} else {
+			//未输入登录信息
+			$('.login').attr('disabled', true).removeClass('haslogin')
+		}
+	})
+	$('.passWord').on("input propertychange", function () {
+		if ($('.userName').val() !== '' && $('.passWord').val() !== '') {
+			//输入了登录信息
+			$('.login').removeAttr('disabled').addClass('haslogin')
+		} else {
+			//未输入登录信息
+			$('.login').attr('disabled', true).removeClass('haslogin')
+		}
+	})
+	//回车时，默认是登陆
+	function on_return(e) {
+		var e = window.event || arguments.callee.caller.arguments[0];
+		if (e && e.keyCode == 13) {
+			logins();
+		}
+	}
+	function logins() {
+		//未输入登录信息
+		$('.login').attr('disabled', true).removeClass('haslogin')
+		$.ajax({
+			//几个参数需要注意一下
+			type: "POST",//方法类型
+			dataType: "json",//预期服务器返回的数据类型
+			url: "${basePath}/login/login.json",//url
+			data: $('#adminForm').serialize(),
+			success: function (data) {
+				console.log(data);//打印服务端返回的数据(调试用)
+				if (data.result) {
+					window.location.href = "${basePath}/index/indexInfo";
+				} else {
+					if (data.msg != "") {
+						warnTips(data.msg);
+					}
+				}
+				$('.login').removeAttr('disabled').addClass('haslogin')
+			},
+			error: function () {
+				warnTips("页面异常，请重新刷新!");
+			}
+		});
+	}
+</script>
+
+</html>

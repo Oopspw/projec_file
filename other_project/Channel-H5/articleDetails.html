@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/public.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    body {
+      background-color: #f5f4f9;
+      padding-top: 0.2rem;
+    }
+  </style>
+  <script>
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          if (clientWidth >= 750) {
+            docEl.style.fontSize = '100px';
+          } else {
+            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+          }
+        };
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+  </script>
+  <title>文章详情</title>
+</head>
+
+<body style="visibility:hidden">
+  <div class="artBox">
+    <div class="art_title artdivBox">
+      <h3>文章标题</h3>
+      <p class="title place">2018一点点奶茶开放加盟</p>
+    </div>
+    <div class="art_img artdivBox">
+      <h3>文章封面</h3>
+      <div class="imgbox">
+        <img src="./images/icon_firm@2x.png" alt="">
+      </div>
+    </div>
+    <div class="art_type artdivBox">
+      <h3>文章类别</h3>
+      <p>45645</p>
+    </div>
+    <div class="ipNum artdivBox">
+      <h3>IP余量</h3>
+      <p>316545</p>
+    </div>
+    <div class="productName artdivBox">
+      <h3>产品名称</h3>
+      <p>一点点奶茶</p>
+    </div>
+    <div class="artId artdivBox">
+      <h3>文章ID</h3>
+      <p>20181564</p>
+    </div>
+  </div>
+  <div class="warn">
+    <!-- 返回的提示消息显示在tips中 -->
+    <p class="tips"></p>
+  </div>
+</body>
+<script src="./js/jquery.min.js"></script>
+<script>
+  $('body').css('visibility', 'inherit')
+  var content = $('.place').text()
+  if (content.length > 20) {
+    $('.place').css('text-align', 'left')
+  }
+</script>
+
+</html>

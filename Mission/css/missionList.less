@@ -1,0 +1,1341 @@
+/* /* 2017-12-4 9:40 为display：flex 添加前缀-webkit-用来兼容ios8; */
+
+* {
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: 'microsoft yahei';
+}
+
+/*遮罩层样式*/
+
+.mask {
+  position: fixed;
+  z-index: 888;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: #fff;
+  img {
+    display: none;
+    position: fixed;
+    z-index: 888;
+    left: 35%;
+    top: 45%;
+    width: 2.4rem;
+    height: 0.8rem;
+  }
+  .font {
+    display: none;
+    position: fixed;
+    z-index: 888;
+    left: 30%;
+    top: 50%;
+    margin-top: 0.2rem;
+  }
+  .font h3 {
+    text-align: center;
+    font-size: 0.36rem;
+    line-height: 0.36rem;
+    font-family: 'Microsoft YaHei';
+    color: #e6e5e5;
+  }
+}
+
+.succeed {
+  display: none;
+  position: fixed;
+  z-index: 888;
+  top: 5rem;
+  left: 37%;
+  width: 2rem;
+  height: 2rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 5%;
+  text-align: center;
+  line-height: 0.8rem;
+  img {
+    width: 80%;
+  }
+  .star {
+    width: 30%;
+  }
+}
+
+/*每日签到*/
+
+#signBox {
+  position: relative;
+  width: 100%;
+  background: url('../images/bgc3b.png') no-repeat;
+  background-size: 100% 100%;
+  /*每日签到背景*/
+  .daySign {
+    width: 100%;
+    height: 2.35rem;
+    padding-top: 0.2rem;
+    /*每日签到按钮*/
+    .signButton {
+      width: 2.26rem;
+      height: 2.26rem;
+      margin: 0 auto;
+      padding: 0.12rem;
+      color: #fff;
+      background-color: #f69e88;
+      border-radius: 50%;
+      border: 0.17rem solid #fbc7a2;
+      .fontButton {
+        width: 1.66rem;
+        height: 1.66rem;
+        border-radius: 50%;
+        padding: 0.2rem;
+        background-color: #e34e47;
+        text-align: center;
+        p {
+          text-align: center;
+          font-size: 0.36rem;
+          line-height: 0.58rem;
+          word-wrap: break-word;
+        }
+      }
+    }
+    /*按钮左侧的图标*/
+    .signButton:before {
+      content: '';
+      position: absolute;
+      width: 0.3rem;
+      height: 0.3rem;
+      top: 1.2rem;
+      left: 1.65rem;
+      background: url('../images/logo.png') no-repeat;
+      background-position: -0.3rem -0.8rem;
+      background-size: 3.5rem;
+    }
+    /*按钮右侧的图标*/
+    .signButton:after {
+      content: '';
+      position: absolute;
+      width: 0.3rem;
+      height: 0.3rem;
+      top: 1.2rem;
+      right: 1.65rem;
+      background: url('../images/logo.png') no-repeat;
+      background-position: 0 -0.8rem;
+      background-size: 3.5rem;
+    }
+    /*点击每日签到后的样式*/
+    .completeSign {
+      width: 2.26rem;
+      height: 2.26rem;
+      margin: 0 auto;
+      padding: 0.12rem;
+      color: #fff;
+      background-color: #e3dcca;
+      border-radius: 50%;
+      border: 0.17rem solid #f4e4c2;
+      .fontButton {
+        width: 1.66rem;
+        height: 1.66rem;
+        border-radius: 50%;
+        padding: 0.2rem;
+        background-color: #c9c9c9;
+        text-align: center;
+        p {
+          text-align: center;
+          font-size: 0.36rem;
+          line-height: 0.55rem;
+          word-wrap: break-word;
+          color: #6e6e6e;
+        }
+      }
+    }
+  }
+  /*每日经验领取*/
+  .suffer {
+    width: 100%;
+    height: 3.67rem;
+    .sufferUl {
+      position: relative;
+      width: 100%;
+      height: 2.6rem;
+      li {
+        position: relative;
+        float: left;
+        width: 1.1rem;
+        height: 1.1rem;
+        margin-top: 0.6rem;
+        margin-left: 0.33rem;
+        font-size: 0.26rem;
+        line-height: 0.7rem;
+        text-align: center;
+        div {
+          // box-shadow: 3px 3px 3px #ccc;
+          // position: relative;
+          // float: left;
+          // width: 1.1rem;
+          // height: 1.1rem;
+          // background-color: #ff9900;
+          // font-size: 0.26rem;
+          // line-height: 0.7rem;
+          // border-radius: 50%;
+          // text-align: center;
+          // color: #fff;
+          box-shadow: 3px 3px 3px #ccc;
+          position: relative;
+          float: left;
+          width: 1.2rem;
+          height: 1.2rem;
+          background-color: #ff9900;
+          font-size: 0.26rem;
+          line-height: 0.7rem;
+          border-radius: 50%;
+          text-align: center;
+          color: #fff;
+        }
+        /*圆边缘线*/
+        div:before {
+          // content: '';
+          // width: 0.94rem;
+          // height: 0.94rem;
+          // top: 0.06rem;
+          // right: 0.06rem;
+          // position: absolute;
+          // border: 1px solid #fff;
+          // border-radius: 50%;
+          content: '';
+          width: 1.08rem;
+          height: 1.08rem;
+          top: 0.05rem;
+          right: 0.04rem;
+          position: absolute;
+          border: 1px solid #fff;
+          border-radius: 50%;
+        }
+        /*每日经验领取完成后的样式*/
+        .completeSuffer {
+          color: #707070;
+          background-color: #dadada;
+          box-shadow: 3px 3px 3px #ccc;
+        }
+        /*当天经验未领取前的样式*/
+        .todaySuffer {
+          color: #fff;
+          background-color: #e8554d;
+          box-shadow: 3px 3px 3px #ccc;
+        }
+        span {
+          display: block;
+          font-size: 0.28rem;
+          width: 1.1rem;
+          height: 0.35rem;
+          margin-top: 0;
+        }
+        p {
+          font-size: 0.26rem;
+          line-height: 0.7rem;
+          text-align: center;
+          width: 1.2rem;
+          color: #717171;
+        }
+        .todayCanclick {
+          color: #e8554d;
+        }
+      }
+      /*中间连接线(完成)*/
+      .line:after {
+        content: '';
+        width: 0.5rem;
+        height: 1px;
+        top: 0.6rem;
+        right: -0.5rem;
+        position: absolute;
+        background-color: #ff9900;
+        box-shadow: 3px 3px 3px #ccc;
+      }
+      li:after {
+        content: '';
+        width: 0.5rem;
+        height: 1px;
+        top: 0.6rem;
+        right: -0.6rem;
+        position: absolute;
+        background-color: #ff9900;
+      }
+      /*后连接线*/
+      .last:after {
+        content: '';
+        width: 0.3rem;
+        height: 1px;
+        top: 0.6rem;
+        right: -0.4rem;
+        position: absolute;
+        background-color: #d8d8d8;
+        box-shadow: 3px 3px 3px #ccc;
+      }
+    }
+    /*前连接线*/
+    .sufferUl:before {
+      //   content: '';
+      //   position: absolute;
+      //   width: 0.5rem;
+      //   height: 1px;
+      //   top: 1.16rem;
+      //   left: 0;
+      //   background-color: #d8d8d8;
+      //   box-shadow: 3px 3px 3px #ccc;
+      content: '';
+      position: absolute;
+      width: 0.5rem;
+      height: 1px;
+      top: 1.18rem;
+      left: 0;
+      background-color: #d8d8d8;
+      box-shadow: 3px 3px 3px #ccc;
+    }
+    /*抽奖按钮*/
+    .lottoButton {
+      margin: 0 auto;
+      width: 3.6rem;
+      height: 0.75rem;
+      text-align: center;
+      font-size: 0.32rem;
+      line-height: 0.75rem;
+      color: #fff;
+      border-radius: 25rem;
+      box-shadow: 3px 3px 3px #ccc;
+      /*设置按钮背景颜色渐变*/
+      /* Firefox 3.6+ */
+      background: -moz-linear-gradient(top, #fecd4a, #feb30c);
+      /* Safari 4-5, Chrome 1-9 */
+      background: -webkit-gradient(linear, top, from(#fecd4a), to(#feb30c));
+      /* Safari 5.1+, Chrome 10+ */
+      background: -webkit-linear-gradient(top, #fecd4a, #feb30c);
+      /* Opera 11.10+ */
+      background: -o-linear-gradient(top, #fecd4a, #feb30c);
+    }
+  }
+}
+
+/*任务列表*/
+
+#missionList {
+  width: 100%;
+  /*今日金币奖励*/
+  .bigTitle {
+    width: 100%;
+    height: 0.92rem;
+    text-align: center;
+    font-size: 0.34rem;
+    font-weight: 400;
+    line-height: 0.92rem;
+    color: #ff9900;
+  }
+  /*----------------------新手任务start-----------------------------*/
+  #newbieMission {
+    width: 100%;
+    box-shadow: 0px 0px 5px #ccc;
+    /*标题*/
+    .nmTitle {
+      width: 100%;
+      height: 0.82rem;
+      position: relative;
+      padding-left: 0.7rem;
+      font-size: 0.34rem;
+      font-weight: 400;
+      line-height: 0.82rem;
+      color: #ff9900;
+      border-top: 1px solid #f5f4f9;
+      border-bottom: 1px solid #f5f4f9;
+    }
+    /*图标*/
+    .nmTitle:before {
+      content: '';
+      position: absolute;
+      width: 0.3rem;
+      height: 0.3rem;
+      top: 0.25rem;
+      left: 0.35rem;
+      background: url('../images/logo.png') no-repeat;
+      background-size: 2.3rem;
+    }
+    /*新手任务列表*/
+    .nmList {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      .liTitle {
+        /*任务标题*/
+        position: relative;
+        float: left;
+        width: 100%;
+        /*任务标题内容*/
+        p {
+          width: 75%;
+          padding-left: 0.7rem;
+          font-size: 0.3rem;
+          line-height: 0.95rem;
+          float: left;
+          /*任务的完成情况备注*/
+          em {
+            display: inline-block;
+            margin-left: 0.05rem;
+            color: #ff9900;
+            font-size: 0.26rem;
+          }
+        }
+        /*任务的金币或者经验值*/
+        span {
+          position: relative;
+          margin-right: 0.9rem;
+          font-size: 0.26rem;
+          line-height: 0.95rem;
+          float: right;
+          color: #ff9900;
+        }
+        /*金币图标*/
+        span:after {
+          content: '';
+          position: absolute;
+          width: 0.4rem;
+          height: 0.45rem;
+          top: 0.25rem;
+          background: url('../images/logo.png') no-repeat;
+          background-size: 3rem 3.5rem;
+          background-position: -0.4rem -0.47rem;
+        }
+        /*箭头图标*/
+        u {
+          position: absolute;
+          top: 0.37rem;
+          left: 7rem;
+          width: 0.2rem;
+          height: 0.2rem;
+          background: url('../images/logo.png') no-repeat;
+          background-size: 1.55rem 1.55rem;
+          background-position: -0.02rem -0.52rem;
+        }
+        /*点击任务标题打开任务详情之后的箭头的样式*/
+        .open {
+          position: absolute;
+          top: 0.37rem;
+          left: 7rem;
+          width: 0.2rem;
+          height: 0.2rem;
+          background: url('../images/logo.png') no-repeat;
+          background-size: 1.55rem 1.55rem;
+          background-position: -0.27rem -0.52rem;
+        }
+      }
+      /*任务详情*/
+      .missionContent {
+        border-top: 1px solid #e5e3ee;
+        border-bottom: 1px solid #e5e3ee; //height: 1rem;
+        float: left;
+        width: 100%;
+        color: #000;
+        background-color: #f5f4f9;
+        display: none;
+        /*任务详情内容*/
+        .upContent {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: flex;
+          padding: 0.2rem 0;
+          .theOne {
+            float: left;
+            width: 80%;
+            padding-left: 0.7rem;
+            font-size: 0.26rem;
+            line-height: 0.4rem;
+            position: relative;
+          }
+          p {
+            margin-top: 0.2rem;
+            font-size: 0.23rem;
+          }
+          p:nth-of-type(1) {
+            position: relative;
+            margin-top: 0;
+          }
+          p:nth-of-type(2) {
+            padding-top: 0.1rem;
+            margin-top: 0.18rem;
+            border-top: 1px solid #e3e3e3;
+          }
+          /*跳转任务的按钮*/
+          .doThis {
+            margin: auto;
+            text-align: center;
+            width: 1.2rem;
+            height: 0.5rem;
+            color: #fff;
+            background-color: #ff9900;
+            font-size: 0.26rem;
+            line-height: 0.5rem;
+            border-radius: 5px;
+          }
+        }
+        /*分界线*/
+        .line {
+          width: 80%;
+          height: 1px;
+          margin-left: 0.9rem;
+          margin-bottom: 0.2rem;
+          background-color: #e6e5ea;
+        }
+        .downContent {
+          margin-bottom: 0.2rem;
+          p {
+            float: left;
+            width: 75%;
+            padding-left: 0.9rem;
+            font-size: 0.23rem;
+            line-height: 0.36rem;
+          }
+          span {
+            position: relative;
+            margin-right: 0.9rem;
+            font-size: 0.26rem;
+            line-height: 0.3rem;
+            float: right;
+            color: #ff9900;
+          }
+          /*金币图标*/
+          span:after {
+            content: '';
+            position: absolute;
+            width: 0.4rem;
+            height: 0.45rem;
+            top: 0.25rem;
+            background: url('../images/logo.png') no-repeat;
+            background-size: 3rem 3.5rem;
+            background-position: -0.4rem -0.47rem;
+          }
+        }
+      }
+      /*点击之后显示*/
+      .showContent {
+        display: inline;
+      }
+      /*圆圈样式*/
+      .liTitle > p:before {
+        content: '';
+        position: absolute;
+        width: 0.22rem;
+        height: 0.22rem;
+        border-radius: 50%;
+        border: 1px solid #e3e3e3;
+        top: 0.36rem;
+        left: 0.37rem;
+        background-color: #fff;
+        z-index: 666;
+      }
+    }
+    /*竖线样式*/
+    .nmList:before {
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      left: 0.5rem;
+      background-color: #e3e3e3;
+    }
+  }
+  /*----------------------新手任务end-----------------------------*/
+  /*----------------------日常任务start-----------------------------*/
+  #dayMission {
+    width: 100%;
+    box-shadow: 0px 0px 5px #ccc;
+    /*日常任务标题*/
+    .dmTitle {
+      width: 100%;
+      height: 0.82rem;
+      position: relative;
+      padding-left: 0.7rem;
+      font-size: 0.34rem;
+      font-weight: 400;
+      line-height: 0.82rem;
+      color: #ff9900;
+      border-top: 1px solid #f5f4f9;
+      border-bottom: 1px solid #f5f4f9;
+    }
+    /*日常任务标题前的图标*/
+    .dmTitle:before {
+      content: '';
+      position: absolute;
+      width: 0.3rem;
+      height: 0.35rem;
+      top: 0.25rem;
+      left: 0.35rem;
+      background: url('../images/logo.png') no-repeat;
+      background-size: 2.4rem;
+      background-position: -0.32rem 0;
+    }
+    /*日常任务列表*/
+    .dmList {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      .liTitle {
+        /*任务标题*/
+        position: relative;
+        float: left;
+        width: 100%;
+        /*任务内容*/
+        p {
+          width: 75%;
+          padding-left: 0.7rem;
+          font-size: 0.3rem;
+          line-height: 0.95rem;
+          float: left;
+          /*任务完成情况的备注内容*/
+          em {
+            display: inline-block;
+            margin-left: 0.05rem;
+            color: #ff9900;
+            font-size: 0.26rem;
+          }
+        }
+        /*完成任务的金币或者经验值*/
+        span {
+          position: relative;
+          margin-right: 0.9rem;
+          font-size: 0.26rem;
+          line-height: 0.95rem;
+          float: right;
+          color: #ff9900;
+        }
+        /*金币图标*/
+        span:after {
+          content: '';
+          position: absolute;
+          width: 0.4rem;
+          height: 0.45rem;
+          top: 0.25rem;
+          background: url('../images/logo.png') no-repeat;
+          background-size: 3rem 3.5rem;
+          background-position: -0.4rem -0.47rem;
+        }
+        /*箭头图标*/
+        u {
+          position: absolute;
+          top: 0.37rem;
+          left: 7rem;
+          width: 0.2rem;
+          height: 0.2rem;
+          background: url('../images/logo.png') no-repeat;
+          background-size: 1.55rem 1.55rem;
+          background-position: -0.02rem -0.52rem;
+        }
+        /*点击任务标题打开任务详情之后的箭头的样式*/
+        .open {
+          position: absolute;
+          top: 0.37rem;
+          left: 7rem;
+          width: 0.2rem;
+          height: 0.2rem;
+          background: url('../images/logo.png') no-repeat;
+          background-size: 1.55rem 1.55rem;
+          background-position: -0.27rem -0.52rem;
+        }
+        /*任务倒计时*/
+        .missionTime {
+          float: left;
+          width: 100%;
+          height: 0.3rem;
+          padding-left: 0.7rem;
+          margin-bottom: 0.1rem;
+          font-size: 0.24rem;
+          color: red;
+        }
+      }
+      /*任务详情*/
+      .missionContent {
+        border-top: 1px solid #e5e3ee;
+        border-bottom: 1px solid #e5e3ee;
+        float: left;
+        width: 100%;
+        color: #000;
+        background-color: #f5f4f9;
+        display: none;
+        /*任务详情内容*/
+        .upContent {
+          position: relative;
+          padding: 0.2rem 0;
+          width: 100%;
+          height: 100%;
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: flex;
+          .theOne {
+            float: left;
+            width: 80%;
+            padding-left: 0.7rem;
+            font-size: 0.26rem;
+            line-height: 0.4rem;
+            position: relative;
+          }
+          p {
+            margin-top: 0.2rem;
+            font-size: 0.23rem;
+          }
+          p:nth-of-type(1) {
+            position: relative;
+            margin-top: 0;
+          }
+          p:nth-of-type(2) {
+            padding-top: 0.1rem;
+            margin-top: 0.18rem;
+            border-top: 1px solid #e3e3e3;
+          }
+          /*跳转任务的按钮*/
+          .doThis {
+            margin: auto;
+            text-align: center;
+            width: 1.2rem;
+            height: 0.5rem;
+            color: #fff;
+            background-color: #ff9900;
+            font-size: 0.26rem;
+            line-height: 0.5rem;
+            border-radius: 5px;
+          }
+        }
+        /*分界线*/
+        .line {
+          width: 80%;
+          height: 1px;
+          margin-left: 0.9rem;
+          margin-bottom: 0.2rem;
+          background-color: #e6e5ea;
+        }
+        .downContent {
+          margin-bottom: 0.2rem;
+          p {
+            float: left;
+            width: 75%;
+            padding-left: 0.9rem;
+            font-size: 0.23rem;
+            line-height: 0.36rem;
+          }
+          /*跳转任务的按钮*/
+          span {
+            position: relative;
+            margin-right: 0.9rem;
+            font-size: 0.26rem;
+            line-height: 0.3rem;
+            float: right;
+            color: #ff9900;
+          }
+          /*金币图标*/
+          span:after {
+            content: '';
+            position: absolute;
+            width: 0.4rem;
+            height: 0.45rem;
+            top: 0.25rem;
+            background: url('../images/logo.png') no-repeat;
+            background-size: 3rem 3.5rem;
+            background-position: -0.4rem -0.47rem;
+            /*content: '';
+            position: absolute;
+            width: 0.4rem;
+            height: 0.45rem;
+            top: -0.08rem;
+            background: url("../images/logo4.png") no-repeat;
+            background-size: 0.4rem 0.45rem;*/
+          }
+        }
+      }
+      /*点击任务标题之后，让任务详情显示*/
+      .showContent {
+        display: inline;
+      }
+      /*圆圈样式*/
+      .liTitle > p:before {
+        content: '';
+        position: absolute;
+        width: 0.22rem;
+        height: 0.22rem;
+        border-radius: 50%;
+        border: 1px solid #ff9900;
+        top: 0.36rem;
+        left: 0.37rem;
+        background-color: #ff9900;
+        z-index: 666;
+      }
+    }
+    /*竖线样式*/
+    .dmList:before {
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      left: 0.5rem;
+      background-color: #ff9900;
+    }
+  }
+  /*----------------------日常任务end-----------------------------*/
+  /*----------------------限时任务start-----------------------------*/
+  #limitMission {
+    width: 100%;
+    box-shadow: 0px 0px 5px #ccc;
+    /*限时任务标题*/
+    .limitmTitle {
+      width: 100%;
+      height: 0.82rem;
+      position: relative;
+      padding-left: 0.7rem;
+      font-size: 0.34rem;
+      font-weight: 400;
+      line-height: 0.82rem;
+      color: #ff9900;
+      border-top: 1px solid #f5f4f9;
+      border-bottom: 1px solid #f5f4f9;
+    }
+    /*限时任务标题前的图标*/
+    .limitmTitle:before {
+      content: '';
+      position: absolute;
+      width: 0.3rem;
+      height: 0.35rem;
+      top: 0.25rem;
+      left: 0.35rem;
+      background: url('../images/logo.png') no-repeat;
+      background-size: 2.5rem;
+      background-position: -1.16rem 0;
+    }
+    /*限时任务列表*/
+    .limitmList {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      .liTitle {
+        /*任务标题*/
+        position: relative;
+        float: left;
+        width: 100%;
+        /*任务内容*/
+        p {
+          width: 70%;
+          padding-left: 0.7rem;
+          font-size: 0.3rem;
+          line-height: 0.95rem;
+          float: left;
+          /*任务完成情况的备注内容*/
+          em {
+            display: inline-block;
+            margin-left: 0.05rem;
+            color: #ff9900;
+            font-size: 0.26rem;
+          }
+        }
+        /*完成任务的金币或者经验值*/
+        span {
+          position: relative;
+          margin-right: 0.9rem;
+          font-size: 0.26rem;
+          line-height: 0.95rem;
+          float: right;
+          color: #ff9900;
+        }
+        /*金币图标*/
+        span:after {
+          content: '';
+          position: absolute;
+          width: 0.4rem;
+          height: 0.45rem;
+          top: 0.25rem;
+          background: url('../images/logo.png') no-repeat;
+          background-size: 3rem 3.5rem;
+          background-position: -0.4rem -0.47rem;
+        }
+        /*箭头图标*/
+        u {
+          position: absolute;
+          top: 0.37rem;
+          left: 7rem;
+          width: 0.2rem;
+          height: 0.2rem;
+          background: url('../images/logo.png') no-repeat;
+          background-size: 1.55rem 1.55rem;
+          background-position: -0.02rem -0.52rem;
+        }
+        /*点击任务标题打开任务详情之后的箭头的样式*/
+        .open {
+          position: absolute;
+          top: 0.37rem;
+          left: 7rem;
+          width: 0.2rem;
+          height: 0.2rem;
+          background: url('../images/logo.png') no-repeat;
+          background-size: 1.55rem 1.55rem;
+          background-position: -0.27rem -0.52rem;
+        }
+        /*任务倒计时*/
+        .Limit-missionTime {
+          float: left;
+          width: 100%;
+          height: 0.3rem;
+          padding-left: 0.7rem;
+          margin-bottom: 0.1rem;
+          font-size: 0.24rem;
+          color: red;
+        }
+      }
+      /*任务详情*/
+      .missionContent {
+        border-top: 1px solid #e5e3ee;
+        border-bottom: 1px solid #e5e3ee;
+        float: left;
+        width: 100%;
+        color: #000;
+        background-color: #f5f4f9;
+        display: none;
+        /*任务详情内容*/
+        .upContent {
+          position: relative;
+          padding: 0.2rem 0;
+          width: 100%;
+          height: 100%;
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: flex;
+          .theOne {
+            float: left;
+            width: 80%;
+            padding-left: 0.7rem;
+            font-size: 0.26rem;
+            line-height: 0.4rem;
+            position: relative;
+          }
+          p {
+            margin-top: 0.2rem;
+            font-size: 0.23rem;
+          }
+          p:nth-of-type(1) {
+            position: relative;
+            margin-top: 0;
+          }
+          p:nth-of-type(2) {
+            padding-top: 0.1rem;
+            margin-top: 0.18rem;
+            border-top: 1px solid #e3e3e3;
+          }
+          /*跳转任务的按钮*/
+          .doThis {
+            margin: auto;
+            text-align: center;
+            width: 1.2rem;
+            height: 0.5rem;
+            color: #fff;
+            background-color: #ff9900;
+            font-size: 0.26rem;
+            line-height: 0.5rem;
+            border-radius: 5px;
+          }
+        }
+        /*分界线*/
+        .line {
+          width: 80%;
+          height: 1px;
+          margin-left: 0.9rem;
+          margin-bottom: 0.2rem;
+          background-color: #e6e5ea;
+        }
+        .downContent {
+          margin-bottom: 0.2rem;
+          p {
+            float: left;
+            width: 75%;
+            padding-left: 0.9rem;
+            font-size: 0.23rem;
+            line-height: 0.36rem;
+          }
+          /*跳转任务的按钮*/
+          span {
+            position: relative;
+            margin-right: 0.9rem;
+            font-size: 0.26rem;
+            line-height: 0.3rem;
+            float: right;
+            color: #ff9900;
+          }
+          /*金币图标*/
+          span:after {
+            content: '';
+            position: absolute;
+            width: 0.4rem;
+            height: 0.45rem;
+            top: 0.25rem;
+            background: url('../images/logo.png') no-repeat;
+            background-size: 3rem 3.5rem;
+            background-position: -0.4rem -0.47rem;
+            /*content: '';
+            position: absolute;
+            width: 0.4rem;
+            height: 0.45rem;
+            top: -0.08rem;
+            background: url("../images/logo4.png") no-repeat;
+            background-size: 0.4rem 0.45rem;*/
+          }
+        }
+      }
+      /*点击任务标题之后，让任务详情显示*/
+      .showContent {
+        display: inline;
+      }
+      /*圆圈样式*/
+      .liTitle > p:before {
+        content: '';
+        position: absolute;
+        width: 0.22rem;
+        height: 0.22rem;
+        border-radius: 50%;
+        border: 1px solid #ff9900;
+        top: 0.36rem;
+        left: 0.37rem;
+        background-color: #ff9900;
+        z-index: 666;
+      }
+    }
+    /*竖线样式*/
+    .limitmList:before {
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      left: 0.5rem;
+      background-color: #ff9900;
+    }
+  }
+  /*----------------------限时任务end-----------------------------*/
+  /*----------------------已完成任务start-----------------------------*/
+  #completeMission {
+    width: 100%;
+    box-shadow: 0px 0px 5px #ccc;
+    border-bottom: 1px solid #f5f4f9;
+    /*大标题*/
+    .cmTitle {
+      width: 100%;
+      height: 0.82rem;
+      position: relative;
+      padding-left: 0.7rem;
+      font-size: 0.34rem;
+      font-weight: 400;
+      line-height: 0.82rem;
+      color: #8a8a8a;
+      border-top: 1px solid #f5f4f9;
+      border-bottom: 1px solid #f5f4f9;
+    }
+    /*大标题前的图标*/
+    .cmTitle:before {
+      content: '';
+      position: absolute;
+      width: 0.35rem;
+      height: 0.35rem;
+      top: 0.25rem;
+      left: 0.35rem;
+      background: url('../images/logo.png') no-repeat;
+      background-size: 2.3rem;
+      background-position: -0.65rem 0; //background: url("../images/logo6.png") no-repeat;
+      //background-size: 0.3rem;
+    }
+    /*完成任务列表*/
+    .cmList {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      /*任务标题*/
+      .liTitle {
+        position: relative;
+        float: left;
+        width: 100%;
+        /*文字内容*/
+        p {
+          width: 75%;
+          padding-left: 0.7rem;
+          font-size: 0.3rem;
+          line-height: 0.95rem;
+          color: #a9a9a9;
+          float: left;
+          /*任务完成情况的备注内容*/
+          em {
+            display: inline-block;
+            margin-left: 0.05rem;
+            color: #a9a9a9;
+            font-size: 0.26rem;
+          }
+        }
+        /*奖励的金币或经验值*/
+        span {
+          position: relative;
+          margin-right: 0.9rem;
+          font-size: 0.26rem;
+          line-height: 0.95rem;
+          float: right;
+          color: #99989e;
+        }
+        /*金币图标*/
+        span:after {
+          content: '';
+          position: absolute;
+          width: 0.4rem;
+          height: 0.45rem;
+          top: 0.25rem;
+          background: url('../images/logo.png') no-repeat;
+          background-size: 3rem 3.5rem;
+          background-position: 0 -0.47rem;
+        }
+        /*箭头图标*/
+        u {
+          position: absolute;
+          top: 0.37rem;
+          left: 7rem;
+          width: 0.2rem;
+          height: 0.2rem;
+          background: url('../images/logo.png') no-repeat;
+          background-size: 1.55rem 1.55rem;
+          background-position: -0.02rem -0.52rem;
+        }
+        /*点击任务标题打开任务详情之后的箭头的样式*/
+        .open {
+          position: absolute;
+          top: 0.37rem;
+          left: 7rem;
+          width: 0.2rem;
+          height: 0.2rem;
+          background: url('../images/logo.png') no-repeat;
+          background-size: 1.55rem 1.55rem;
+          background-position: -0.27rem -0.52rem;
+        }
+      }
+      /*任务详情*/
+      .missionContent {
+        border-top: 1px solid #e5e3ee;
+        border-bottom: 1px solid #e5e3ee;
+        float: left;
+        width: 100%;
+        color: #a9a9a9;
+        background-color: #f5f4f9;
+        display: none;
+        /*任务详情内容*/
+        .upContent {
+          padding: 0.2rem 0;
+          position: relative;
+          width: 100%;
+          height: 100%;
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: flex;
+          .theOne {
+            float: left;
+            width: 80%;
+            padding-left: 0.7rem;
+            font-size: 0.26rem;
+            line-height: 0.4rem;
+            position: relative;
+          }
+          p {
+            margin-top: 0.2rem;
+            font-size: 0.23rem;
+          }
+          p:nth-of-type(1) {
+            position: relative;
+            margin-top: 0;
+          }
+          p:nth-of-type(2) {
+            padding-top: 0.1rem;
+            margin-top: 0.18rem;
+            border-top: 1px solid #e3e3e3;
+          }
+          /*跳转任务的按钮*/
+          .doThis {
+            margin: auto;
+            text-align: center;
+            width: 1.2rem;
+            height: 0.5rem;
+            color: #9a999f;
+            background-color: #e5e3ee;
+            font-size: 0.26rem;
+            line-height: 0.5rem;
+            border-radius: 5px;
+          }
+        }
+        /*分界线*/
+        .line {
+          width: 80%;
+          height: 1px;
+          margin-left: 0.9rem;
+          margin-bottom: 0.2rem;
+          background-color: #e6e5ea;
+        }
+        .downContent {
+          margin-bottom: 0.2rem;
+          p {
+            float: left;
+            width: 75%;
+            padding-left: 0.9rem;
+            font-size: 0.23rem;
+            line-height: 0.36rem;
+          }
+          span {
+            position: relative;
+            margin-right: 0.9rem;
+            font-size: 0.26rem;
+            line-height: 0.3rem;
+            float: right;
+            color: #e5e3ee;
+          }
+          /*金币图标*/
+          span:after {
+            span:after {
+              content: '';
+              position: absolute;
+              width: 0.4rem;
+              height: 0.45rem;
+              top: 0.25rem;
+              background: url('../images/logo.png') no-repeat;
+              background-size: 3rem 3.5rem;
+              background-position: 0 -0.47rem;
+            }
+          }
+        }
+      }
+      /*点击任务标题之后，让任务详情显示*/
+      .showContent {
+        display: inline;
+      }
+      /*圆圈样式*/
+      .liTitle > p:before {
+        content: '';
+        position: absolute;
+        width: 0.22rem;
+        height: 0.22rem;
+        border-radius: 50%;
+        border: 1px solid #e5e3ee;
+        top: 0.36rem;
+        left: 0.37rem;
+        background-color: #e5e3ee; //a9a9a9
+        z-index: 666;
+      }
+    }
+    /*竖线样式*/
+    .cmList:before {
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      left: 0.5rem;
+      background-color: #e5e3ee;
+    }
+    /*----------------------已完成任务end-----------------------------*/
+  }
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.animated.hinge {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+}
+
+.animated.bounceIn,
+.animated.bounceOut,
+.animated.flipOutX,
+.animated.flipOutY {
+  -webkit-animation-duration: 0.75s;
+  animation-duration: 0.75s;
+}
+
+@-webkit-keyframes swing {
+  20% {
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+  }
+  40% {
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+  }
+  60% {
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
+  }
+  80% {
+    -webkit-transform: rotate(-5deg);
+    transform: rotate(-5deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes swing {
+  20% {
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+  }
+  40% {
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+  }
+  60% {
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
+  }
+  80% {
+    -webkit-transform: rotate(-5deg);
+    transform: rotate(-5deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+
+.swing {
+  -webkit-transform-origin: top center;
+  transform-origin: top center;
+  -webkit-animation-name: swing;
+  animation-name: swing;
+  animation-iteration-count: infinite;
+}
+
+.warn {
+  display: none;
+  width: 4rem;
+  background-color: rgba(50, 50, 50, 0.7);
+  border-radius: 0.2rem;
+  position: fixed;
+  z-index: 666;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  text-align: center;
+  line-height: 0.6rem;
+  padding: 0.2rem;
+}
+.warn p {
+  font-size: 0.3rem;
+  color: #fff;
+}

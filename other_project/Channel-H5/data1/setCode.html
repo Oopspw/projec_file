@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+	<link rel="stylesheet" href="${basePath}/resources/style/css/public.css">
+	<link rel="stylesheet" href="${basePath}/resources/style/css/style.css">
+	<script src="${basePath}/thirdparty/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<style>
+		body {
+			background-color: #f5f4f9;
+			padding-top: 0.2rem;
+		}
+	</style>
+	<script>
+		(function (doc, win) {
+			var docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange'
+				: 'resize', recalc = function () {
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth)
+						return;
+					if (clientWidth >= 750) {
+						docEl.style.fontSize = '100px';
+					} else {
+						docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+					}
+				};
+			if (!doc.addEventListener)
+				return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+	<title>设置账号</title>
+</head>
+
+<body style="visibility:hidden">
+	<div class="setBox">
+		<div class="headBox usarll">
+			<h3>头像</h3>
+			<div class="set_icon">
+				<img src="${basePath}/resources/style/images/icon_ID@2x.png" alt="">
+			</div>
+		</div>
+		<div class="codeBox usarll">
+			<h3>账号</h3>
+			<p>${accountName!''}</p>
+		</div>
+		<div class="channelBoxs usarll">
+			<h3>姓名</h3>
+			<p>${manageAdmin.contact!''}</p>
+		</div>
+		<div class="channelBoxs usarll">
+			<h3>渠道号</h3>
+			<p>${manageAdmin.channelCode!''}</p>
+		</div>
+		<div class="channelBoxs usarll">
+			<h3>剩余积分</h3>
+			<p>${manageAdmin.balancePoint!''}</p>
+		</div>
+	</div>
+	<div class="exitBtn">退出登录</div>
+	<div class="warn">
+		<!-- 返回的提示消息显示在tips中 -->
+		<p class="tips"></p>
+	</div>
+</body>
+<script>
+	$('body').css('visibility', 'inherit')
+	$('.exitBtn').click(function () {
+		window.location.href = "${basePath}/login/reset"
+	})
+</script>
+
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+	<link rel="stylesheet" href="${basePath}/resources/style/css/public.css">
+	<link rel="stylesheet" href="${basePath}/resources/style/css/style.css">
+	<script src="${basePath}/thirdparty/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<link rel="stylesheet" href="${basePath}/thirdparty/iscroll/style/main.css" />
+	<script>
+		(function (doc, win) {
+			var docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange'
+				: 'resize', recalc = function () {
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth)
+						return;
+					if (clientWidth >= 750) {
+						docEl.style.fontSize = '100px';
+					} else {
+						docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+					}
+				};
+			if (!doc.addEventListener)
+				return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+	<title>首页</title>
+</head>
+
+<body style="visibility:hidden">
+	<div id="wrapper">
+		<div class="myIscroll">
+			<div id="pullDown">
+				<span class="pullDownLabel"></span>
+			</div>
+			<!-- 头部 -->
+			<div class="header">
+				<div class="head_box jumpSet">
+					<!-- 用户头像 -->
+					<img class="head_icon" src="${basePath}/resources/style/images/icon_ID@2x.png" alt="">
+				</div>
+				<div class="head_words">
+					<h3 class="nickName">${accountName!''}</h3>
+					<p class="channelCode">
+						渠道号:
+						<span class="green jumpSet">
+							<input type="text" id="bar" value="${manageAdmin.channelCode!''}" readonly="readonly">
+						</span>
+						<span class="green">
+							<button class="btn" data-clipboard-action="copy" data-clipboard-target="#bar">(点击复制)</button>
+						</span>
+					</p>
+					<h3 class="title jumpSet">
+						剩余积分：
+						<span class="green">${manageAdmin.balancePoint!''}</span>
+					</h3>
+				</div>
+				<span class="arrows jumpSet"> </span>
+			</div>
+			<!-- 分类空位查询 -->
+			<div class="vacancy">
+				<h3 class="title">分类空位查询</h3>
+				<div class="left">
+					<p>
+						<a href="${basePath}/index/catalogKongWeiList">详细列表</a>
+					</p>
+				</div>
+			</div>
+			<div class="inputBox">
+				<!-- 用户输入code -->
+				<input type="text" id="adcatalogCode" name="adcatalogCode" placeholder="请输入分类代码查询" class="find">
+				<!-- 查询按钮 -->
+				<button class="findBtn">查询</button>
+			</div>
+			<!-- 媒体号查询 -->
+			<div class="media">
+				<h3 class="title">媒体号</h3>
+				<div class="left">
+					<p id="showFind">
+						共
+						<span class="numSum" id="numSum">${totalNum!''}</span>条记录
+					</p>
+				</div>
+			</div>
+			<div class="commonBox">
+				<!-- 筛选条件栏 -->
+				<!-- 筛选搜索条件 -->
+				<div class="searchBox">
+					<h4>搜索条件</h4>
+					<input type="text" class="search" id="contactmobileSearch" value="${contactmobile!''}" placeholder="请输入媒体运营人或手机号">
+					<button class="searchBtn">立即筛选</button>
+				</div>
+				<h3 class="resetTips">下拉重置筛选条件</h3>
+			</div>
+			<!-- 列表 -->
+			<#if list?? && (list?size>0) >
+				<div class="list">
+					<ul id="thelist">
+						<#list list as info>
+							<a href="${basePath}/index/customerArticleList?customerid=${info.customerid!''}">
+								<li>
+									<div class="index">${info_index+1}</div>
+									<div class="picBox">
+										<!-- 个人 -->
+										<#if info.customer_type==2>
+											<!-- 1个人  2公司 -->
+											<img src="${basePath}/resources/style/images/icon_firm@2x.png" alt="">
+											<#else>
+												<img src="${basePath}/resources/style/images/icon_Caret@2x.png" alt="">
+										</#if>
+									</div>
+									<div class="contents">
+										<h3>${info.customer_name!''}</h3>
+										<p>
+											运营者:
+											<span class="tureName">${info.contact!''}</span>
+										</p>
+										<p>
+											手机号:
+											<span class="numbul">${info.mobile!''}</span>
+										</p>
+									</div>
+									<div class="details">
+										详情
+									</div>
+								</li>
+							</a>
+						</#list>
+					</ul>
+					<div id="pullUp">
+						<span class="pullUpLabel">上拉加载更多</span>
+					</div>
+				</div>
+				<#else>
+					<!-- 列表无数据时显示 -->
+					<div class="noData">
+						<img src="${basePath}/resources/style/images/icon_default@2x.png" alt="">
+						<p>暂无媒体账号记录</p>
+						<div id="pullUp">
+							<span class="pullUpLabel">上拉加载更多</span>
+						</div>
+					</div>
+			</#if>
+			<!-- 遮罩层 -->
+			<div class="mask"></div>
+			<!-- 空位查询结果显示 -->
+			<div class="showFindTip">
+				<div class="showHead">
+					<img src="${basePath}/resources/style/images/backgroud@2x.png" alt="">
+				</div>
+				<p>尊敬的用户</p>
+				<p>
+					您查询的
+					<span id="SumNum" class="red"></span>当前剩余
+					<span id="residue" class="red"></span>
+				</p>
+				<div class="closeBtn">确认</div>
+			</div>
+			<div>
+				<form id="frmSearch">
+					<input type="hidden" id="page" name="page" value="${pageNum!''}" />
+					<input type="hidden" id="nums" name="nums" value="${indexNum!''}" />
+					<input type="hidden" id="contactmobile" name="contactmobile" value="${contactmobile!''}" />
+				</form>
+			</div>
+			<div class="warn">
+				<!-- 返回的提示消息显示在tips中 -->
+				<p class="tips"></p>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="${basePath}/thirdparty/iscroll/script/iscroll.js"></script>
+<script type="text/javascript" src="${basePath}/thirdparty/iscroll/script/main.js"></script>
+<script type="text/javascript" src="${basePath}/resources/style/js/common.js"></script>
+<script type="text/javascript" src="${basePath}/resources/style/js/clipboard.min.js"></script>
+<script>
+	$('body').css('visibility', 'inherit')
+	$('.jumpSet').click(function () {
+		window.location.href = "${basePath}/index/setcode"
+	})
+	//查询
+	$('.findBtn').click(function () {
+		var adcatalogCode = $("#adcatalogCode").val();
+		if (adcatalogCode == "") {
+			warnTips("请输入分类代码查询!");
+		} else {
+			$.ajax({
+				type: "get",
+				url: "${basePath}/index/catalogKongWeiNum",
+				data: { "adcatalogCode": adcatalogCode },
+				dataType: "json",
+				success: function (data) {
+					if (data.result) {
+						var obj = data.data;
+						if (obj != null) {
+							//获取用户输入的值
+							var code = $('.find').val()
+							$("#SumNum").html(code);
+							$("#residue").html(obj.kongweiNum);
+							//显示查询结果
+							$('.mask').show()
+							$('.showFindTip').show()
+						} else {
+							warnTips("没有相关分类!");
+						}
+					}
+				}
+			})
+		}
+
+	})
+
+	//立即筛选
+	$('.searchBtn').click(function () {
+		var contactmobile = $('#contactmobileSearch').val();
+		window.location.href = encodeURI(encodeURI("${basePath}/index/indexInfo?contactmobile=" + contactmobile));
+
+	})
+
+	// 重置筛选信息
+	$('.resetCode').click(function () {
+		$('.searchBox').show()
+		$('.searchCode').hide()
+		$('#contactmobileSearch').val('')
+		$("#contactmobile").val("");
+	})
+
+	//关闭查询结果显示
+	$('.closeBtn').click(function () {
+		$('.mask').hide()
+		$('.showFindTip').hide()
+	})
+
+	//下拉刷新当前数据
+	function pullDownAction() {
+		setTimeout(function () {
+			//这里执行刷新操作
+
+			myScroll.refresh();
+		}, 400);
+		window.location.href = "${basePath}/index/indexInfo";
+	}
+	//上拉加载更多数据
+	function pullUpAction() {
+		$("#page").val(parseInt($("#page").val()) + 1);
+		setTimeout(
+			function () {
+				var el, li;
+				el = document.getElementById('thelist');
+				var tree = "";
+				$.ajax({
+					type: "get",
+					url: "${basePath}/index/indexInfoFenye",
+					data: $('#frmSearch').serialize(),
+					dataType: "json",
+					success: function (data) {
+						var obj = eval(data);
+						if (obj.length != 0) {
+							var count = 0;
+							$.each(obj, function (i, item) {
+								var indexnum = parseInt($("#nums").val()) + 1;
+								console.log(indexnum);
+								var type = item.customer_type;
+								if (type == 2) {
+									$("#thelist").append("<li><div class='index'>" + (indexnum + i) + "</div><div class='picBox'><img src='${basePath}/resources/style/images/icon_firm@2x.png' alt=''></div>"
+										+ "<div class='contents'><h3>" + item.customer_name + "</h3><p>运营者:<span class='tureName'>" + item.contact + "</span></p><p>手机号:<span class='numbul'>"
+										+ item.mobile + "</span></p></div><div class='details'><a href='${basePath}/index/customerArticleList?customerid=" + item.customerid + "'>详情</a></div></li>");
+								} else {
+									$("#thelist").append("<li><div class='index'>" + (indexnum + i) + "</div><div class='picBox'><img src='${basePath}/resources/style/images/icon_Caret@2x.png' alt=''></div>"
+										+ "<div class='contents'><h3>" + item.customer_name + "</h3><p>运营者:<span class='tureName'>" + item.contact + "</span></p><p>手机号:<span class='numbul'>"
+										+ item.mobile + "</span></p></div><div class='details'><a href='${basePath}/index/customerArticleList?customerid=" + item.customerid + "'>详情</a></div></li>");
+								}
+								count++;
+							})
+
+							myScroll.refresh();
+							$("#nums").val(parseInt($("#nums").val()) + count);
+						} else {
+							pullUpEl.querySelector('.pullUpLabel').innerHTML = '当前栏目数据已加载完';
+							setTimeout(function () {
+							}, 1000);
+						}
+					}
+				});
+				myScroll.refresh();
+			}, 400);
+	}
+
+	//复制到粘贴板
+	var clipboard = new Clipboard('.btn');
+	clipboard.on('success', function (e) {
+		$('.warn').fadeIn()
+		$('.tips').text('复制成功')
+		$('.warn').fadeOut(3000)
+	});
+	clipboard.on('error', function (e) {
+		console.log(e)
+	});
+</script>
+
+</html>

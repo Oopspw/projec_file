@@ -1,0 +1,421 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+/*html5*/
+/*重置*/
+html {
+  -webkit-text-size-adjust: 100%;
+}
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+form,
+fieldset,
+legend,
+button,
+submit,
+input,
+textarea,
+select,
+p,
+table,
+tr,
+th,
+td,
+hr,
+sup,
+address,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+em {
+  font-style: normal;
+  font-weight: normal;
+}
+ul,
+ol,
+li {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  outline: none;
+}
+body {
+  font-family: 'Microsoft Yahei';
+}
+/*body,button,input,select,textarea {*/
+/*font: 12px/1.5 "宋体",arial, verdana, sans-serif*/
+/*}*/
+img {
+  border: none;
+}
+a,
+img,
+div,
+button,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-appearance: none;
+  outline: none;
+} /*清除苹果手机按钮默认样式*/
+.clearfix:before,
+.clearfix:after {
+  content: '';
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
+/*定位*/
+.tl {
+  text-align: left;
+}
+.tc {
+  text-align: center;
+}
+.tr {
+  text-align: right;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.cl {
+  clear: left;
+}
+.pr {
+  position: relative;
+}
+.pa {
+  position: absolute;
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+button,
+select {
+  text-transform: none;
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+td,
+th {
+  padding: 0;
+}
+input:focus {
+  outline: none;
+}
+@charset "utf-8";
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Microsoft YaHei';
+}
+
+html,
+body {
+  height: 100%;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+input,
+select,
+form images,
+button {
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-appearance: none;
+  outline: none;
+  border: none;
+}
+
+.clearfix:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+textarea {
+  width: 95%;
+}
+
+a {
+  color: #000;
+  text-decoration: none !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+em,
+i {
+  font-style: normal;
+}
+
+img {
+  border: none;
+}
+
+input,
+img {
+  vertical-align: middle;
+}
+
+body {
+  color: #000;
+  font-family: 'Microsoft YaHei';
+  background: #fff;
+  overflow-x: hidden;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+  font-weight: 400;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+:focus {
+  outline: 0;
+}
+
+ins {
+  text-decoration: none;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@keyframes load4 {
+  0%,
+  100% {
+    box-shadow: 0em -3em 0em 0.2em #000000, 2em -2em 0 0em #000000,
+      3em 0em 0 -0.5em #000000, 2em 2em 0 -0.5em #000000,
+      0em 3em 0 -0.5em #000000, -2em 2em 0 -0.5em #000000,
+      -3em 0em 0 -0.5em #000000, -2em -2em 0 0em #000000;
+  }
+  12.5% {
+    box-shadow: 0em -3em 0em 0em #000000, 2em -2em 0 0.2em #000000,
+      3em 0em 0 0em #000000, 2em 2em 0 -0.5em #000000, 0em 3em 0 -0.5em #000000,
+      -2em 2em 0 -0.5em #000000, -3em 0em 0 -0.5em #000000,
+      -2em -2em 0 -0.5em #000000;
+  }
+  25% {
+    box-shadow: 0em -3em 0em -0.5em #000000, 2em -2em 0 0em #000000,
+      3em 0em 0 0.2em #000000, 2em 2em 0 0em #000000, 0em 3em 0 -0.5em #000000,
+      -2em 2em 0 -0.5em #000000, -3em 0em 0 -0.5em #000000,
+      -2em -2em 0 -0.5em #000000;
+  }
+  37.5% {
+    box-shadow: 0em -3em 0em -0.5em #000000, 2em -2em 0 -0.5em #000000,
+      3em 0em 0 0em #000000, 2em 2em 0 0.2em #000000, 0em 3em 0 0em #000000,
+      -2em 2em 0 -0.5em #000000, -3em 0em 0 -0.5em #000000,
+      -2em -2em 0 -0.5em #000000;
+  }
+  50% {
+    box-shadow: 0em -3em 0em -0.5em #000000, 2em -2em 0 -0.5em #000000,
+      3em 0em 0 -0.5em #000000, 2em 2em 0 0em #000000, 0em 3em 0 0.2em #000000,
+      -2em 2em 0 0em #000000, -3em 0em 0 -0.5em #000000,
+      -2em -2em 0 -0.5em #000000;
+  }
+  62.5% {
+    box-shadow: 0em -3em 0em -0.5em #000000, 2em -2em 0 -0.5em #000000,
+      3em 0em 0 -0.5em #000000, 2em 2em 0 -0.5em #000000, 0em 3em 0 0em #000000,
+      -2em 2em 0 0.2em #000000, -3em 0em 0 0em #000000,
+      -2em -2em 0 -0.5em #000000;
+  }
+  75% {
+    box-shadow: 0em -3em 0em -0.5em #000000, 2em -2em 0 -0.5em #000000,
+      3em 0em 0 -0.5em #000000, 2em 2em 0 -0.5em #000000,
+      0em 3em 0 -0.5em #000000, -2em 2em 0 0em #000000, -3em 0em 0 0.2em #000000,
+      -2em -2em 0 0em #000000;
+  }
+  87.5% {
+    box-shadow: 0em -3em 0em 0em #000000, 2em -2em 0 -0.5em #000000,
+      3em 0em 0 -0.5em #000000, 2em 2em 0 -0.5em #000000,
+      0em 3em 0 -0.5em #000000, -2em 2em 0 0em #000000, -3em 0em 0 0em #000000,
+      -2em -2em 0 0.2em #000000;
+  }
+}
+
+.breadcrumb {
+  margin-bottom: 0px;
+}
+
+.breadcrumb > li + li::before {
+  content: '';
+}
+
+.breadcrumb > li::after {
+  content: '>';
+}

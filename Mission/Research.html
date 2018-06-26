@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/Research.css?v=7.1">
+    <title>测评详情</title>
+</head>
+
+<body>
+    <!-- 遮罩层 -->
+    <div class="B-mask"></div>
+    <div class="mask"></div>
+    <!-- 弹框 -->
+    <div class="complete">
+        <div class="complete-head">
+            <img class="complete-pic" src="./images/congratulation.png" alt="">
+            <h1>恭喜</h1>
+        </div>
+        <div class="complete-body">
+            <h3>恭喜您已经完成了呱呱测评</h3>
+            <p>共
+                <span class="showtext">0</span>&nbsp;题</p>
+            <p>答对
+                <span class="showture">0</span>&nbsp;题，答错
+                <span class="showfalse">0</span>&nbsp;题</p>
+            <h4>
+                <span>+</span>
+                <span id="endgold">0</span>
+                <i></i>
+            </h4>
+            <button id="accept-btn">确定</button>
+        </div>
+    </div>
+    <!-- 警告弹框 -->
+    <div class="warning">
+        <div class="warning-head">
+            <img class="warning-pic" src="./images/warning.png" alt="">
+            <h1>警告</h1>
+        </div>
+        <div class="warning-body">
+            <p>你确定退出呱呱测评吗？</p>
+            <p>退出测评会终止</p>
+            <p>此次福利任务且不会给予任何奖励！</p>
+            <button id="go-on-btn">继续答题</button>
+            <button id="exit-btn">坚决退出</button>
+        </div>
+    </div>
+    <!-- 测评入口页面 -->
+    <div class="R-index">
+        <div class="box1">
+            <h3>呱呱福利任务开启，问你&nbsp;
+                <span id="questionnum">0</span>&nbsp;道题。</h3>
+            <h3>你敢来接受呱呱测评的严加拷问吗？</h3>
+            <p>答对一道题可获得&nbsp;
+                <span id="questiongold">0</span>&nbsp;金币的奖励</p>
+            <p class="plast">答题越多，系统给的奖励也越丰厚哦~</p>
+        </div>
+        <div class="box2">
+            <h2>+
+                <span id="maxgold">0</span>
+            </h2>
+        </div>
+    </div>
+    <div class="tipsBox">
+        <img src="./images/t1-icon4.png" alt="">
+        <h3>您已完成当前任务</h3>
+    </div>
+    <!-- 头部模块 -->
+    <div class="header">
+        <span class="orderNum">
+            <i class="index-num">0</i>/
+            <i class="index-sum">0</i>
+        </span>
+        <p class="topic"></p>
+    </div>
+    <!-- 答案选择区域 -->
+    <div class="choose">
+        <ul id="textContent">
+        </ul>
+    </div>
+    <!-- 提交区域 -->
+    <div class="pullBox">
+        <button id="first-btn">开始答题</button>
+        <button id="next-btn">继续下一题
+            <i></i>
+        </button>
+        <div class="tips">
+            <p>注意：任务必须连续完成才有效，全部完成之后才能获取奖励。</p>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="js/template.js"></script>
+<script>
+    $(window).on("resize", function () {
+        var deviceWidth = $(window).width(),
+            html = $("html");
+        if (deviceWidth > 750) {
+            deviceWidth = 750;
+            html.css("fontSize", 100);
+        } else if (deviceWidth < 300) {
+            deviceWidth = 300;
+            html.css("fontSize", deviceWidth / 7.5);
+        } else {
+            html.css("fontSize", deviceWidth / 7.5);
+        }
+    }).trigger("resize");
+</script>
+<script type="text/html" id="question">
+    {{each answeritems as value}}
+    <li data-judge="{{value.rightanswer}}" data-questionid="{{questionid}}" data-answerid="{{value.answerid}}" class="rightanswer{{value.rightanswer}}">{{value.answernum}}.{{value.answercontent}}</li>
+    {{/each}}
+</script>
+<script type="text/javascript" src="js/Research.js?v=7.1"></script>

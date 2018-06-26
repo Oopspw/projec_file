@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>新年的第一个小目标</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/newGoal.css?v=1.10">
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body>
+    <div class="B-mask"></div>
+    <div class="mask"></div>
+    <header>
+        <img src="./images/new_bgc.png" alt="">
+    </header>
+    <nav>
+        <ul id="addList">
+            <li>
+                <p class="addList_p">新增徒弟数目</p>
+                <h3><em id="addNum">0</em><i>人</i></h3>
+            </li>
+            <li>
+                <p class="addList_p">有效徒弟数目</p>
+                <h3><em class="yxtdNum">0</em><i>人</i></h3>
+            </li>
+            <li>
+                <p class="addList_p">在路上的奖励</p>
+                <h3><em id="wayNum">0</em><i>元</i></h3>
+            </li>
+        </ul>
+    </nav>
+    <div id="new_content">
+        <ul id="new_ul">
+        </ul>
+    </div>
+    <div class="new_hbtop">
+    </div>
+    <div class="new_hbbtm">
+        <div class="new_take">
+            <h3 id="share_btn">立即分享赚奖励</h3>
+        </div>
+        <p class="small_tips">奖励可累加，每个累计梯度奖励只能获得一次。</p>
+    </div>
+    <div class="new_tips">
+        <p>规则</p>
+    </div>
+    <div class="tips_box">
+        <div class="tips_head">
+            <i id="close"></i>
+            <h2>活动规则</h2>
+        </div>
+        <p class="weight" style="margin-top:1rem;">活动时间：</p>
+        <p><i id="starttime">2018年1月3日</i>-<i id="endtime">2018年1月29日</i></p>
+        <p class="marginB">活动期间，每新增一位徒弟在获取原有的<span class="red">2.5</span>元奖励以及师徒收益分成的基础上。有效徒弟达到指定人数，可额外获得梯度现金奖励，最高额外获得<i id="rewardmaxgold" class="red"></i>元现金。收徒越多奖励越高。</p>
+        <p class="weight">有效徒弟：</p>
+        <p class="marginB" style="font-size:.28rem;line-height:.45rem;">活动期间内新收取的每位徒弟，徒弟连续三天有获得文章分享、收徒奖励、任务奖励带来的收益之一，即为有效徒弟。</p>
+        <h2 class="talking">郑重声明</h2>
+        <p style="font-size:.24rem;line-height:.4rem; color:#a6a39a">为保证广大呱呱用户的收益不被影响，对于存在违规收徒行为的用户，平台将取消其参加活动的资格，并扣除所有奖励，请遵守平台规则正常邀请收徒！</p>
+        <div class="tips_footer">
+        </div>
+    </div>
+</body>
+</html>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/template.js"></script>
+<script type="text/html" id="newGoala">
+    {{each data.rewardsetitems as value i}}
+        {{if value.status === '0'}}
+        <li>
+            <span class="new_state">进行中</span>
+            <div class="new_title">
+                <h3 class="new_money">{{value.rewardgold}}<i>元</i></h3>
+                <p class="add_tudi">累计<em><span class='yxtdNum'></span>/{{value.totalnum}}</em>名有效徒弟</p>
+            </div>
+            <button class="_goto">去收徒</button>
+        </li>
+        {{else if value.status === '1'}}
+        <li class='complate'>
+            <span class="complate_fontC">已完成</span>
+            <div class="new_title">
+                <h3 class="new_money">{{value.rewardgold}}<i>元</i></h3>
+                <p class="add_tudi">累计<em>{{value.totalnum}}/{{value.totalnum}}</em>名有效徒弟</p>
+            </div>
+            <button class="_goto cColor" disabled>去收徒</button>
+        </li>
+        {{/if}}
+    {{/each}}
+</script>
+<script src="./js/newGoal.js?v=1.10"></script>

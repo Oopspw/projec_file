@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/public.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    body {
+      background-color: #f5f4f9;
+      padding-top: 0.2rem;
+    }
+  </style>
+  <script>
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          if (clientWidth >= 750) {
+            docEl.style.fontSize = '100px';
+          } else {
+            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+          }
+        };
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+  </script>
+  <title>设置账号</title>
+</head>
+
+<body style="visibility:hidden">
+  <div class="setBox">
+    <div class="headBox usarll">
+      <h3>头像</h3>
+      <div class="set_icon">
+        <img src="./images/icon_Caret@2x.png" alt="">
+      </div>
+    </div>
+    <div class="codeBox usarll">
+      <h3>账号</h3>
+      <p>账号123456</p>
+    </div>
+    <div class="channelBoxs usarll">
+      <h3>姓名</h3>
+      <p>张三</p>
+    </div>
+    <div class="channelBoxs usarll">
+      <h3>渠道号</h3>
+      <p>456451</p>
+    </div>
+    <div class="channelBoxs usarll">
+      <h3>剩余积分</h3>
+      <p>456451</p>
+    </div>
+  </div>
+  <div class="exitBtn">退出登录</div>
+  <div class="warn">
+    <!-- 返回的提示消息显示在tips中 -->
+    <p class="tips"></p>
+  </div>
+</body>
+<script src="./js/jquery.min.js"></script>
+<script>
+  $('body').css('visibility', 'inherit')
+  $('.exitBtn').click(function () {
+    window.location.replace('load.html')
+  })
+</script>
+
+</html>

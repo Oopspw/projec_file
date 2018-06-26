@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta content="yes" name="apple-mobile-web-app-capable">  
+	<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+	<link rel="stylesheet" href="${basePath}/resources/style/css/public.css">
+	<link rel="stylesheet" href="${basePath}/resources/style/css/style.css">
+	<script src="${basePath}/thirdparty/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<style>
+		body {
+			background-color: #f5f4f9;
+			padding-top: 0.2rem;
+		}
+	</style>
+	<script>
+		(function (doc, win) {
+			var docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange'
+				: 'resize', recalc = function () {
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth)
+						return;
+					if (clientWidth >= 750) {
+						docEl.style.fontSize = '100px';
+					} else {
+						docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+					}
+				};
+			if (!doc.addEventListener)
+				return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+	<title>文章详情</title>
+</head>
+
+<body style="visibility:hidden">
+	<div class="artBox">
+		<div class="art_title artdivBox">
+			<h3>文章标题</h3>
+			<#if customerArticle.title?length gt 16>
+			<p class="title">
+			<#else>
+			<p class="title" style="text-align:right;">
+			</#if>
+			${customerArticle.title!''}</p>
+		</div>
+		<div class="art_img artdivBox">
+			<h3>文章封面</h3>
+			<div class="imgbox">
+				<#if (customerArticle.photo?contains("mmbiz.qpic.cn")|| customerArticle.photo?contains("mmbiz.qlogo.cn")) && customerArticle.photo?index_of("${weixinImageDealUrl}")<0>
+                		<img id="" src="${weixinImageDealUrl}${customerArticle.photo!''}" alt=""/>
+                	<#else>
+                	<img id="" src="${customerArticle.photo!''}" alt="" />
+                	</#if>
+			</div>
+		</div>
+		<div class="art_type artdivBox">
+			<h3>文章类别</h3>
+			<p>${customerArticle.author!''}</p>
+		</div>
+		<div class="ipNum artdivBox">
+			<h3>IP余量</h3>
+			<p>${customerArticle.content!''}</p>
+		</div>
+		<div class="productName artdivBox">
+			<h3>产品名称</h3>
+			<p>${mediaProductName!''}</p>
+		</div>
+		<div class="artId artdivBox">
+			<h3>文章ID</h3>
+			<p>${customerArticle.articleid!''}</p>
+		</div>
+	</div>
+</body>
+<script>
+	$('body').css('visibility', 'inherit')
+</script>
+
+</html>

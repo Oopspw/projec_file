@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta content="yes" name="apple-mobile-web-app-capable">  
+	<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+	<link rel="stylesheet" href="${basePath}/resources/style/css/public.css">
+	<link rel="stylesheet" href="${basePath}/resources/style/css/style.css">
+	<style>
+		body {
+			background-color: #fff;
+		}
+	</style>
+	<script>
+		(function (doc, win) {
+			var docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange'
+				: 'resize', recalc = function () {
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth)
+						return;
+					if (clientWidth >= 750) {
+						docEl.style.fontSize = '100px';
+					} else {
+						docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+					}
+				};
+			if (!doc.addEventListener)
+				return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+	<title>空位列表</title>
+</head>
+
+<body style="visibility:hidden">
+	<div class="vacancyData">
+		<h4>分类代码</h4>
+		<p>剩余空位</p>
+	</div>
+	<div class="vacancyList">
+		<ul>
+			<#if list?? && (list?size>0) >
+				<#list list as info>
+					<li>
+						<div class="left">
+							<p>${info.ad_catalog_code!''}</p>
+						</div>
+						<div class="right">
+							<p class="red">${info.lastnum!''}</p>
+						</div>
+					</li>
+				</#list>
+				<#else>
+					<!-- 增加 -->
+					<div class="noVacancy">
+						<img src="${basePath}/resources/style/images/icon_default@2x.png" alt="">
+						<p>暂无媒体账号记录</p>
+					</div>
+			</#if>
+		</ul>
+	</div>
+	<div class="warn">
+		<!-- 返回的提示消息显示在tips中 -->
+		<p class="tips"></p>
+	</div>
+</body>
+<script src="${basePath}/thirdparty/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script>
+	$('body').css('visibility', 'inherit')
+</script>
+
+</html>

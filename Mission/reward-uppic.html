@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/reward-uppic.css">
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <title>悬赏任务图片上传</title>
+</head>
+
+<body>
+    <div class="B-mask">
+    </div>
+    <div class="mask"></div>
+    <!-- 弹框 -->
+    <div class="pic-alert">
+        <div class="alert-body">
+            <img class="" src="./images/t1-icon2.png" alt="">
+            <p>图片没有上传完毕呢?</p>
+            <p>是不是漏掉了呢?赶紧检查一下吧!</p>
+        </div>
+        <div class="alert-bottom">
+            <button id="inspect-btn">检查一下</button>
+        </div>
+    </div>
+
+    <div class="commit-alert">
+        <div class="alert-body">
+            <img class="" src="./images/reward-icon8.png" alt="">
+            <p>您的资料已提交成功</p>
+            <p>审核专员会尽快审核完毕</p>
+        </div>
+        <div class="alert-bottom">
+            <button id="commit-accept-btn">确定</button>
+        </div>
+    </div>
+
+
+    <div class="pic-content">
+        <h3 class="uppic-title">上传任务图</h3>
+        <div class="picrow clearfix">
+            <h2>1、</h2>
+            <p class="uppic-toke">任务图说明：需要上传完整的任务图需求</p>
+            <p class="uppic-index">上传任务图:</p>
+            <div class="show-pic">
+                <img class="exampleImg" id="imgTest1" src="./images/huluwa.jpg" alt="">
+                <em></em>
+            </div>
+            <div class="preview upbox upbox1">
+                <input type="file" name="image" accept="image/*" onchange="previewImage(this)" id='1'>
+            </div>
+            <div class="warn-box">
+                <img src="./images/reward-icon11.png" alt="">
+                <p>图片审核未通过</p>
+                <p>请重新上传</p>
+                <input type="file" name="image" accept="image/*" onchange="previewImage(this)" id='1'>
+            </div>
+        </div>
+
+        <div class="picrow clearfix">
+            <h2>2、</h2>
+            <p class="uppic-toke">任务图说明：需要上传完整的任务图需求</p>
+            <p class="uppic-index">上传任务图:</p>
+            <div class="show-pic">
+                <img class="exampleImg" id="imgTest2" src="./images/huluwa.jpg" alt="">
+                <em></em>
+            </div>
+            <div class="preview upbox upbox2">
+                <input type="file" name="image" accept="image/*" onchange="previewImage(this)" id='2'>
+            </div>
+            <div class="issure-box">
+                <img src="./images/reward-icon8.png" alt="">
+                <p>图片已审核通过</p>
+            </div>
+            <div class="warn-box">
+                <img src="./images/reward-icon11.png" alt="">
+                <p>图片审核未通过</p>
+                <p>请重新上传</p>
+                <input type="file" name="image" accept="image/*" onchange="previewImage(this)" id='3'>
+            </div>
+        </div>
+
+        <div class="picrow clearfix">
+            <h2>3、</h2>
+            <p class="uppic-toke">任务图说明：需要上传完整的任务图需求</p>
+            <p class="uppic-index">上传任务图:</p>
+            <div class="show-pic">
+                <img class="exampleImg" id="imgTest3" src="./images/huluwa.jpg" alt="">
+                <em></em>
+            </div>
+            <div class="preview upbox upbox3">
+                <input type="file" name="image" accept="image/*" onchange="previewImage(this)" id='3'>
+            </div>
+            <div class="warn-box">
+                <img src="./images/reward-icon11.png" alt="">
+                <p>图片审核未通过</p>
+                <p>请重新上传</p>
+                <input type="file" name="image" accept="image/*" onchange="previewImage(this)" id='3'>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <img src="./images/reward-icon2.png" alt="">
+            <p class="wetips">咨询客服微信：ggzkf09</p>
+        </div>
+        <div class="btn-box">
+            <button id="commit">提交审核</button>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="js/lrz.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="./js/template.js"></script>
+<!-- <script type="text/html" id='picHtml'>
+    {{each data as value}}
+    <div class="picrow clearfix">
+        <h2>3、</h2>
+        <p class="uppic-toke">任务图说明：需要上传完整的任务图需求</p>
+        <p class="uppic-index">上传任务图:</p>
+        <div class="show-pic">
+            <img class="exampleImg" id="imgTest3" src="./images/huluwa.jpg" alt="">
+            <em></em>
+        </div>
+        {{if }}
+        <div class="preview upbox upbox3">
+            <input type="file" name="image" accept="image/*" onchange="previewImage(this)" id='3'>
+        </div>
+        {{else if }}
+        <div class="warn-box">
+            <img src="./images/reward-icon11.png" alt="">
+            <p>图片审核未通过</p>
+            <p>请重新上传</p>
+            <input type="file" name="image" accept="image/*" onchange="previewImage(this)" id='3'>
+        </div>
+        {{else}}
+        <div class="issure-box">
+            <img src="./images/reward-icon8.png" alt="">
+            <p>图片已审核通过</p>
+        </div>
+        {{/if}}
+    </div>
+    {{/each}}
+</script> -->
+<script src="./js/reward-uppic.js"></script>

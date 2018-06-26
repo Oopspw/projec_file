@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!-- 百度禁止转码 -->
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/missionList70.css?v=7.2.3">
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <title>任务中心</title>
+</head>
+
+<body style="visibility:hidden">
+    <!--遮罩层-->
+    <div class="mask">
+        <img src="images/icon_upload.png" alt="" class="maskImg">
+        <div class="font">
+            <h3>点击屏幕，重新加载</h3>
+        </div>
+    </div>
+    <div class="warn">
+        <p>签到获取抽奖机会</p>
+    </div>
+    <!--点击签到时的弹出框-->
+    <div class="succeed">
+        <img src="images/logo13.png" alt="">
+        <img src="images/logo14.png" alt="" class="star">
+    </div>
+    <!--每日签到-->
+    <div id="wrapper">
+        <div id="scroller">
+            <div id="signBox">
+                <div class="daySign">
+                    <!--每日签到按钮-->
+                    <div class="signButton">
+                        <div class="fontButton">
+                            <p class="buttonText">每&nbsp;日签&nbsp;到</p>
+                        </div>
+                    </div>
+                    <i></i>
+                </div>
+                <!--每日经验领取-->
+                <div class="suffer">
+                    <ul class="sufferUl">
+                        <li class="first">
+                            <div class="line">
+                                <span id="day1">+0</span>
+                                <i>成长值</i>
+                            </div>
+                            <p>第1天</p>
+                        </li>
+                        <li>
+                            <div class="line">
+                                <span id="day2">+0</span>
+                                <i>成长值</i>
+                            </div>
+                            <p>第2天</p>
+                        </li>
+                        <li>
+                            <div class="line">
+                                <span id="day3">+0</span>
+                                <i>成长值</i>
+                            </div>
+                            <p>第3天</p>
+                        </li>
+                        <li>
+                            <div class="line">
+                                <span id="day4">+0</span>
+                                <i>成长值</i>
+                            </div>
+                            <p>第4天</p>
+                        </li>
+                        <li class="last">
+                            <div>
+                                <span id="day5">+0</span>
+                                <i>成长值</i>
+                            </div>
+                            <p>第5天</p>
+                        </li>
+                    </ul>
+                    <!--抽奖按钮-->
+                    <div class="lottoButton">去抽奖</div>
+                </div>
+            </div>
+            <div class="bannars" id="jumptoTTZ">
+                <img src="./images/banner.jpg" alt="">
+            </div>
+            <!--任务列表-->
+            <div id="missionList">
+                <h3 class="bigTitles">今日金币奖励
+                    <span class="bigTitle"></span>
+                </h3>
+                <!--新手任务-->
+                <div id="newbieMission" class="missionShow">
+                    <h4 class="ulTitle">新手任务</h4>
+                </div>
+                <!-- 高价任务 -->
+                <div id="limitMission" class="missionShow">
+                    <h4 class="ulTitle">高价任务</h4>
+                </div>
+                <!--日常任务-->
+                <div id="dayMission" class="missionShow">
+                    <h4 class="ulTitle">日常任务</h4>
+                </div>
+                <!--已完成任务-->
+                <div id="completeMission" class="missionShow">
+                    <h4 class="ulTitle">已完成任务</h4>
+                </div>
+            </div>
+            <div class="nullBox"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="js/jquery.min.js"></script>
+<script src="js/jroll.js"></script>
+<script src="js/jroll-pulldown.js"></script>
+<script src="js/template.js"></script>
+<!--模板-->
+<!--今日完成任务金币数与总金币数量模板-->
+<script type="text/html" id="goldCoin">
+    ({{data.todayfinishgold}}/{{data.totalgold}})
+</script>
+<!--新手任务列表模板-->
+<script type="text/html" id="getNewList">
+    <ul class="ulList clearfix">
+        {{each data as value }}
+        <li class="liTitle">
+            <div class="itbox">
+            {{if value.plannum === "0"}}
+            <p>{{value.tasktitle}}</p>
+            {{else if value.type === "14"}}
+            <p>{{value.tasktitle}}</p>
+            {{else}}
+            <p>{{value.tasktitle}}<em>(今日<i class="completenum">{{value.completenum}}</i>/<i>{{value.plannum}})</i></em></p>
+            {{/if}}
+            {{if value.gold !== ""&&value.gold>0}}
+            <span class='goldIcon'>{{value.gold}}</span>
+            {{else}}
+            <span class='context' style='padding-right:0.7rem'>{{#value.context}}</span>
+            {{/if}}
+            <u></u>
+            </div>
+        </li>
+        <li class="missionContent">
+            <div class="upContent clearfix">
+                <div class="theOne">{{#value.taskinro}}</div>
+                {{if value.type === "7"}}
+                <div class="doThis goTo{{value.type}}" value="{{value.taskid}}" data="NewTask">查看详情</div>
+                {{else if value.type === "8"}}
+                <div class="doThis goTo{{value.type}}" value="{{value.taskid}}" data="DailyTask">查看详情</div>
+                {{else if value.type === "14"}} <!-- 跳转 -->
+                <div class="doThis goTo{{value.type}}" id="{{value.jumto}}" value="{{value.taskid}}" data="DailyTask" datajumto="{{value.jumto}}" title="{{value.url}}" style="font-size:.24rem">去完成</div>
+                {{else}}
+                <div class="doThis goTo{{value.type}}">去完成</div>
+                {{/if}}
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+<!--日常任务列表模板-->
+<script type="text/html" id="getDmList">
+    <ul class="ulList clearfix">
+        {{each data as value }}
+        <li class="liTitle">
+            <div class="itbox">
+            <!--任务标题-->
+            {{if value.plannum === "0"}}
+            <p>{{value.tasktitle}}</p>
+            {{else if value.type === "14"}}
+            <p>{{value.tasktitle}}</p>
+            {{else}}
+            <p>{{value.tasktitle}}<em>(今日<i class="completenum">{{value.completenum}}</i>/<i>{{value.plannum}})</i></em></p>
+            {{/if}}
+            {{if value.gold !== ""&&value.gold>0}}
+            <span class='goldIcon'>{{value.gold}}</span>
+            {{else}}
+            <span class='context' style='padding-right:0.7rem'>{{#value.context}}</span>
+            {{/if}}
+            <u></u>
+            <!--任务倒计时-->
+            {{if value.countdowntime !== "0"}}
+            <div class="missionTime">
+                00:00:00后刷新
+            </div>
+            {{else}}
+            <div class="missionTime" style="opacity:0;float:none;width:0;height:0">
+            </div>
+            {{/if}}
+            </div>
+        </li>
+        <li class="missionContent">
+            <div class="upContent clearfix">
+                <!--任务详情-->
+                <div class="theOne">{{#value.taskinro}}</div>
+                {{if value.countdowntime === "0"}} {{if value.type === "7"}}
+                <div class="doThis goTo{{value.type}}" value="{{value.taskid}}" data="DailyTask">查看详情</div>
+                {{else if value.type === "8"}}
+                <div class="doThis goTo{{value.type}}" value="{{value.taskid}}" data="DailyTask">去测评</div>
+                {{else if value.type === "13"}}
+                <div class="doThis goTo{{value.type}}" id="{{value.taskid}}" value="{{value.taskid}}" data="DailyTask" style="font-size:.24rem">去参加</div>
+                {{else if value.type === "14"}} <!-- 跳转 -->
+                <div class="doThis goTo{{value.type}}" id="{{value.jumto}}" value="{{value.taskid}}" data="DailyTask" datajumto="{{value.jumto}}" title="{{value.url}}" style="font-size:.24rem">去完成</div>
+                {{else}}
+                <div class="doThis goTo{{value.type}}">去完成</div>
+                {{/if}} {{/if}}
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+<!-- 限时任务列表模板 -->
+<script type="text/html" id="getLimitmList">
+    <ul class="ulList clearfix">
+        {{each data as value }}
+        <li class="liTitle">
+            <div class="itbox">
+            <!--任务标题-->
+            {{if value.plannum === "0"}}
+            <p>{{value.tasktitle}}</p>
+            {{else if value.type === "14"}}
+            <p>{{value.tasktitle}}</p>
+            {{else}}
+            <p>{{value.tasktitle}}<em>(<i class="completenum">{{value.completenum}}</i>/<i>{{value.plannum}})</i></em></p>
+            {{/if}}
+            {{if value.gold !== ""&&value.gold>0}}
+            <span class='goldIcon'>{{value.gold}}</span>
+            {{else}}
+            <span class='context' style='padding-right:0.7rem'>{{#value.context}}</span>
+            {{/if}}
+            <u></u>
+            </div>
+        </li>
+        <li class="missionContent">
+            <div class="upContent clearfix">
+                <!--任务详情-->
+                <div class="theOne">{{#value.taskinro}}</div>
+                {{if value.type === "7"}}
+                <div class="doThis goTo{{value.type}}" value="{{value.taskid}}" data="DailyTask">查看详情</div>
+                {{else if value.type === "8"}}
+                <div class="doThis goTo{{value.type}}" value="{{value.taskid}}" data="DailyTask">去测评</div>
+                {{else if value.type === "9"}}
+                <div class="doThis goTo{{value.type}}" id="{{value.taskid}}" value="{{value.taskid}}" data="DailyTask" style="font-size:.24rem">进入悬赏</div>
+                {{else if value.type === "13"}}
+                <div class="doThis goTo{{value.type}}" id="{{value.taskid}}" value="{{value.taskid}}" data="DailyTask" style="font-size:.24rem">去参加</div>
+                {{else if value.type === "14"}} <!-- 跳转 -->
+                <div class="doThis goTo{{value.type}}" id="{{value.jumto}}" value="{{value.taskid}}" data="DailyTask" datajumto="{{value.jumto}}" title="{{value.url}}" style="font-size:.24rem">去完成</div>
+                {{else if value.type === ""}}
+                <a href="{{value.linkurl}}" class="doThis goTo"><div class="doThis goTo" id="{{value.taskid}}" value="{{value.taskid}}" data="DailyTask" style="font-size:.24rem">立即到账</div></a>
+                {{else}}
+                <div class="doThis goTo{{value.type}}" value="{{value.taskid}}">去完成</div>
+                {{/if}}
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+<!--已完成任务列表模板-->
+<script type="text/html" id="getCmList">
+    <ul class="ulList clearfix">
+        {{each data as value }}
+        <li class="liTitle">
+            <div class="itbox">
+            <p>{{value.tasktitle}}</p>
+            {{if value.gold !== ""&&value.gold>0}}
+            <span class='goldIcon'>{{value.gold}}</span>
+            {{/if}}
+            <u></u>
+            </div>
+        </li>
+        <li class="missionContent">
+            <div class="upContent clearfix">
+                <div class="theOne">{{#value.taskinro}}</div>
+                <div class="doThis">已完成</div>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+<script src="js/missionList70.js?v=7.2.4"></script>

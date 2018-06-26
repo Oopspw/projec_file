@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/question.css">
+  <script>
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          if (clientWidth >= 750) {
+            docEl.style.fontSize = '100px';
+          } else {
+            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+          }
+        };
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+  </script>
+  <title>呱呱头条怎么玩</title>
+</head>
+
+<body style="visibility:hidden">
+  <div class="bannar">
+    <h2 class="G_title">呱呱头条</h2>
+    <h3 class="M_title">手把手教你</h3>
+    <h3 class="M_title mTitle">赚钱</h3>
+    <img src="./images/icon4@2x.png" width="100%">
+  </div>
+  <div class="p_title">
+    第一步：签到、抽奖、任务中心
+    <u class="icon_down"></u>
+  </div>
+  <div class="p_content">
+    <p>1、打开“呱呱头条”，点击底部的
+      <span class="green">(1)"任务"</span>
+    </p>
+    <p>进入“任务”页面即可看到
+      <span class="green">(2)签到</span>，签到成功就能获得
+      <span class="green">抽奖(3)</span>机会。抽完奖后再回去看看任务，每天都能
+      <span class="green">(4)做任务</span>，每天都能领金币！</p>
+    <img src="./images/screenshot/mission1.png" alt="">
+  </div>
+  <div class="p_title">
+    第二步：分享文章
+    <u class="icon_down"></u>
+  </div>
+  <div class="p_content">
+    <p>
+      <span class="green">点击(1)分享，选择</span>您喜欢的文章，可点击进入阅读详情页面，点击
+      <span class="green">(2)分享</span>到
+      <span class="green">朋友圈</span>或
+      <span class="green">微信好友</span>，让
+      <span class="green">朋友</span>的点击阅读为您
+      <span class="green">带来收益</span>！
+    </p>
+    <p>
+      每被一位朋友浏览，您就会多一份
+      <span class="green">金币，上不封顶</span>！
+    </p>
+    <p>
+      不同等级会员文章收益不同，等级越高，收益越多！
+    </p>
+    <img src="./images/screenshot/article_read.png" alt="">
+    <img src="./images/screenshot/article_detile.png" alt="">
+    <img src="./images/screenshot/article_share.png" alt="">
+  </div>
+  <div class="p_title">
+    第三步：收徒让你赚更多
+    <u class="icon_down"></u>
+  </div>
+  <div class="p_content">
+    <p>点击
+      <span class="green">师徒(1)</span>，然后点击
+      <span class="green">(2)分享收徒或者扫码收徒，即可完成收徒</span>
+    </p>
+    <p>收徒好处多多，
+      <span class="green">徒弟</span>每天会向您
+      <span class="green">进贡金币</span>，每收一个徒弟都可以获得丰厚的收徒奖励</p>
+    <img src="./images/screenshot/master1.png" alt="">
+    <div class="btnBox">
+      <a href="javascript:;" id="gotoBtn">去收徒</a>
+    </div>
+  </div>
+  <div class="p_title">
+    第四步：兑换&amp;收益
+    <u class="icon_down"></u>
+  </div>
+  <div class="p_content">
+    <p>收入的金币足够提现了？马上点击
+      <span class="green">(1)我要兑换</span>吧~
+    </p>
+    <p>
+      <span class="green">1000金币=1元</span>
+    </p>
+    <h4 class="green">1.微信兑换</h4>
+    <p>点击
+      <span class="green">(1)设置微信账号</span>，按指示绑定好微信后，选择
+      <span class="green">(2)提现金额</span>,然后点击
+      <span class="green">(3)立即兑换</span>，即可完成微信兑换</p>
+    <img src="./images/screenshot/exchange_wechat.png" alt="">
+    <h4 class="green">2.支付宝兑换</h4>
+    <p>点击
+      <span class="green">(1)设置支付宝账号</span>，如图所示绑定好支付宝后，选择
+      <span class="green">(2)提现金额</span>,然后点击
+      <span class="green">(3)立即兑换</span>，即可完成支付宝兑换</p>
+    <img src="./images/screenshot/exchange_alipay.png" alt="">
+    <p>如果在兑换过程中遇到任何问题，请联系我们的呱呱客服，尽快为您解决。</p>
+  </div>
+  <div class="btnBox1">
+    <a href="javascript:;" id="jumpBtn">我知道了 开始赚钱</a>
+  </div>
+</body>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/question.js"></script>
+
+</html>

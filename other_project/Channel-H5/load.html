@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/public.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <script>
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth
+          if (!clientWidth) return
+          if (clientWidth >= 750) {
+            docEl.style.fontSize = '100px'
+          } else {
+            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px'
+          }
+        }
+      if (!doc.addEventListener) return
+      win.addEventListener(resizeEvt, recalc, false)
+      doc.addEventListener('DOMContentLoaded', recalc, false)
+    })(document, window)
+  </script>
+  <title>呱呱媒体渠道开放平台</title>
+</head>
+
+<body style="visibility:hidden">
+  <div class="iconBox">
+    <img src="./images/icon_ID@2x.png" alt="">
+  </div>
+  <div class="userBox">
+    <input type="text" class="userName" placeholder="请输入您的账号">
+    <span class="clearText"></span>
+  </div>
+  <div class="passBox">
+    <input type="password" class="passWord" placeholder="请输入登录密码" id="new_password">
+    <span class="showWord"></span>
+  </div>
+  <button class="login" disabled>登&nbsp;&nbsp;录</button>
+  <div class="warn">
+    <!-- 返回的提示消息显示在tips中 -->
+    <p class="tips"></p>
+  </div>
+</body>
+<script src="./js/jquery.min.js"></script>
+<script>
+  $('body').css('visibility', 'inherit')
+  // 获取并判断是否输入登录信息
+  $('.userName').on("input propertychange", function () {
+    if ($('.userName').val() !== '' && $('.passWord').val() !== '') {
+      //输入了登录信息
+      $('.login').removeAttr('disabled').addClass('haslogin')
+    } else {
+      //未输入登录信息
+      $('.login').attr('disabled', true).removeClass('haslogin')
+    }
+  })
+  $('.passWord').on("input propertychange", function () {
+    if ($('.userName').val() !== '' && $('.passWord').val() !== '') {
+      //输入了登录信息
+      $('.login').removeAttr('disabled').addClass('haslogin')
+    } else {
+      //未输入登录信息
+      $('.login').attr('disabled', true).removeClass('haslogin')
+    }
+  })
+
+  $('.login').click(function () {
+  })
+
+  $('.userName').focus(function () {
+    $('.clearText').show()
+  })
+  $('.clearText').click(function () {
+    $('.userName').val('')
+  })
+  $('.passWord').focus(function () {
+    $('.showWord').show()
+  })
+
+  // 密码显隐控制
+  var pass = document.getElementById("new_password")
+  var flag = true
+  $('.showWord').click(function () {
+    if (flag) {
+      pass.type = 'text'
+      flag = false
+    } else {
+      pass.type = 'password'
+      flag = true
+    }
+  })
+</script>
+<script src="./js/common.js"></script>
+
+</html>

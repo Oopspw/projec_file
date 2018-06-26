@@ -1,0 +1,262 @@
+body {
+  background-color: #f1f1f1;
+}
+.B-mask {
+  position: fixed;
+  z-index: 888;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+.mask {
+  display: none;
+  position: fixed;
+  z-index: 888;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.pic-alert {
+  display: none;
+  position: fixed;
+  z-index: 889;
+  width: 5.98rem;
+  height: 4.88rem;
+  top: 3.8rem;
+  left: .8rem;
+  background-color: #fff;
+  text-align: center;
+  border-radius: .3rem;
+}
+.pic-alert img {
+  display: inline-block;
+  margin: .64rem 0 .6rem;
+  width: .96rem;
+}
+.pic-alert p {
+  font-size: .36rem;
+  color: #000;
+  margin-bottom: .22rem;
+}
+.pic-alert .alert-bottom {
+  width: 5.98rem;
+  height: 1.02rem;
+  margin-top: .7rem;
+}
+.pic-alert .alert-bottom #inspect-btn {
+  float: left;
+  width: 100%;
+  height: 1.02rem;
+  background-color: #e6e6e6;
+  border: none;
+  outline: none;
+  border-radius: 0 0 .3rem .3rem;
+  font-size: .36rem;
+  color: #48bb44;
+}
+.commit-alert {
+  display: none;
+  position: fixed;
+  z-index: 889;
+  width: 5.98rem;
+  height: 4.88rem;
+  top: 3.8rem;
+  left: .8rem;
+  background-color: #fff;
+  text-align: center;
+  border-radius: .3rem;
+}
+.commit-alert img {
+  display: inline-block;
+  margin: .64rem 0 .6rem;
+  width: .96rem;
+}
+.commit-alert p {
+  font-size: .36rem;
+  color: #000;
+  margin-bottom: .22rem;
+}
+.commit-alert .alert-bottom {
+  width: 5.98rem;
+  height: 1.02rem;
+  margin-top: .7rem;
+}
+.commit-alert .alert-bottom #commit-accept-btn {
+  float: left;
+  width: 100%;
+  height: 1.02rem;
+  background-color: #e6e6e6;
+  border: none;
+  outline: none;
+  border-radius: 0 0 .3rem .3rem;
+  font-size: .36rem;
+  color: #48bb44;
+}
+.pic-content {
+  width: 100%;
+}
+.pic-content .uppic-title {
+  font-size: .36rem;
+  padding-top: .5rem;
+  padding-left: .3rem;
+  background-color: #fff;
+}
+.pic-content .picrow {
+  background-color: #fff;
+  padding: 0 0.3rem;
+  padding-top: .3rem;
+  width: 100%;
+  height: 3.5rem;
+  margin-bottom: .3rem;
+}
+.pic-content .picrow h2 {
+  font-size: .26rem;
+  color: #545454;
+  margin-bottom: .2rem;
+}
+.pic-content .picrow .uppic-toke {
+  font-size: .26rem;
+  color: #545454;
+  margin-bottom: .2rem;
+}
+.pic-content .picrow .uppic-index {
+  float: left;
+  width: 1.5rem;
+  line-height: 2rem;
+  font-size: .26rem;
+  color: #545454;
+}
+.pic-content .picrow .warn-box {
+  display: none;
+  position: relative;
+  float: right;
+  width: 2.4rem;
+  height: 2.09rem;
+  background-color: #ebebeb;
+  text-align: center;
+}
+.pic-content .picrow .warn-box img {
+  display: inline-block;
+  height: .6rem;
+  margin: .28rem 0 .16rem;
+}
+.pic-content .picrow .warn-box p {
+  font-size: .3rem;
+  color: #ff2702;
+  margin-bottom: .1rem;
+}
+.pic-content .picrow .warn-box input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.4rem;
+  height: 2rem;
+  opacity: 0;
+}
+.pic-content .picrow .issure-box {
+  display: none;
+  position: relative;
+  float: right;
+  width: 2.4rem;
+  height: 2.09rem;
+  background-color: #ebebeb;
+  text-align: center;
+}
+.pic-content .picrow .issure-box img {
+  display: inline-block;
+  height: .6rem;
+  margin: .5rem 0 .16rem;
+}
+.pic-content .picrow .issure-box p {
+  font-size: .3rem;
+  color: #27c12f;
+  margin-bottom: .1rem;
+}
+.pic-content .picrow .preview {
+  position: relative;
+  float: right;
+  width: 2.4rem;
+  height: 2.07rem;
+  border: 1px dashed #d8d8da;
+}
+.pic-content .picrow .preview input {
+  width: 2.4rem;
+  height: 2rem;
+  opacity: 0;
+  z-index: 880;
+}
+.pic-content .picrow .upbox {
+  position: relative;
+  float: right;
+  width: 2.4rem;
+  height: 2.07rem;
+  border: 1px dashed #d8d8da;
+}
+.pic-content .picrow .upbox input {
+  width: 2.4rem;
+  height: 2rem;
+  opacity: 0;
+}
+.pic-content .picrow .upbox:before {
+  content: " ";
+  width: .59rem;
+  height: .53rem;
+  position: absolute;
+  top: 40%;
+  left: 35%;
+  background: url('../images/reward-icon10.png') no-repeat;
+  background-size: .59rem .53rem;
+}
+.pic-content .picrow .show-pic {
+  float: left;
+  width: 2.81rem;
+  height: 2.06rem;
+  position: relative;
+}
+.pic-content .picrow .show-pic .exampleImg {
+  height: 2.06rem;
+  max-width: 2.81rem;
+}
+.pic-content .picrow .show-pic em {
+  width: .76rem;
+  height: .67rem;
+  right: 0;
+  top: 0;
+  position: absolute;
+  background: url('../images/reward-icon.png') no-repeat;
+  background-position: 0 -0.92rem;
+  background-size: 4.6rem;
+}
+.pic-content .tip-box {
+  width: 100%;
+  text-align: center;
+}
+.pic-content .tip-box img {
+  width: .75rem;
+}
+.pic-content .tip-box .wetips {
+  display: inline-block;
+  font-size: .26rem;
+  line-height: .58rem;
+  vertical-align: middle;
+  color: #fd0100;
+}
+.pic-content .btn-box {
+  width: 100%;
+  height: 2rem;
+  text-align: center;
+}
+.pic-content .btn-box #commit {
+  display: inline-block;
+  margin-right: .3rem;
+  width: 5.8rem;
+  height: .84rem;
+  outline: none;
+  border: none;
+  border-radius: .1rem;
+  background-color: #2ab526;
+  font-size: .36rem;
+  color: #fff;
+}
